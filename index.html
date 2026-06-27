@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday.exe</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- BOOT SCREEN -->
+
+<div id="bootScreen">
+
+    <div class="boot-logo">
+        Microsoft Windows XP
+    </div>
+
+    <div class="boot-loading">
+
+        <div class="loading-bar">
+
+            <div class="loading-fill"></div>
+
+        </div>
+
+        <p>Starting Windows...</p>
+
+    </div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginScreen" class="hidden">
+
+    <div class="login-window">
+
+        <div class="title-bar">
+            Windows XP Professional
+        </div>
+
+        <div class="login-body">
+
+            <h2>Log On to Windows</h2>
+
+            <label>
+
+                Username
+
+                <input
+                type="text"
+                id="username"
+                placeholder="Make sure it's your real name">
+
+            </label>
+
+            <label>
+
+                Password
+
+                <input
+                type="password"
+                id="password"
+                placeholder="Type anything :)">
+
+            </label>
+
+            <p class="hint">
+                Password isn't checked.
+                You can literally type anything.
+            </p>
+
+            <button id="loginButton">
+
+                OK
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- DESKTOP -->
+
+<div id="desktop" class="hidden">
+
+    <img
+    class="wallpaper"
+    src="assets/wallpapers/bliss.jpg">
+
+    <div id="desktopIcons">
+
+        <div class="icon" id="birthdayIcon">
+
+            🎂
+
+            <span>Birthday.exe</span>
+
+        </div>
+
+    </div>
+
+    <div id="taskbar">
+
+        <button id="startButton">
+
+            Start
+
+        </button>
+
+        <div id="clock"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
