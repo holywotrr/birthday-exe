@@ -147,3 +147,37 @@ document.onmouseup=null;
 }
 
 }
+
+document.getElementById("birthdayIcon").ondblclick=()=>{
+
+createWindow(
+
+"Birthday.exe",
+
+`
+
+<h2>Hello ${localStorage.getItem("guestName")}!</h2>
+
+<p>
+
+Welcome...
+
+You've received
+
+<b>1 New Invitation.</b>
+
+</p>
+
+<br>
+
+<button id="virusStart">
+
+Open
+
+</button>
+
+`
+
+);
+
+};
