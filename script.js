@@ -49,3 +49,57 @@ minute:'2-digit'
 setInterval(updateClock,1000);
 
 updateClock();
+
+// ---------------- WINDOW SYSTEM ----------------
+
+const container = document.getElementById("windowContainer");
+
+let highestZ = 100;
+
+function createWindow(title, html){
+
+const win = document.createElement("div");
+
+win.className="window";
+
+win.style.left="250px";
+win.style.top="120px";
+win.style.zIndex=highestZ++;
+
+win.innerHTML=`
+
+<div class="window-title">
+
+<span>${title}</span>
+
+<button class="closeBtn">X</button>
+
+</div>
+
+<div class="window-body">
+
+${html}
+
+</div>
+
+`;
+
+container.appendChild(win);
+
+makeDraggable(win);
+
+win.querySelector(".closeBtn").onclick=()=>{
+
+win.remove();
+
+};
+
+win.onclick=()=>{
+
+win.style.zIndex=highestZ++;
+
+};
+
+return win;
+
+}
