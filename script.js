@@ -103,3 +103,47 @@ win.style.zIndex=highestZ++;
 return win;
 
 }
+
+function makeDraggable(win){
+
+const header=win.querySelector(".window-title");
+
+let x=0;
+let y=0;
+
+header.onmousedown=(e)=>{
+
+e.preventDefault();
+
+x=e.clientX;
+y=e.clientY;
+
+document.onmousemove=drag;
+
+document.onmouseup=stop;
+
+};
+
+function drag(e){
+
+const dx=x-e.clientX;
+const dy=y-e.clientY;
+
+x=e.clientX;
+y=e.clientY;
+
+win.style.top=(win.offsetTop-dy)+"px";
+
+win.style.left=(win.offsetLeft-dx)+"px";
+
+}
+
+function stop(){
+
+document.onmousemove=null;
+
+document.onmouseup=null;
+
+}
+
+}
