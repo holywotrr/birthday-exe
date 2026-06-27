@@ -207,3 +207,55 @@ color:white;
 font-weight:bold;
 
 }
+
+/* XP WINDOWS */
+
+.xp-window{
+
+position:absolute;
+
+background:#ECE9D8;
+
+border:2px solid #0A246A;
+
+box-shadow:8px 8px 12px rgba(0,0,0,.35);
+
+}
+
+.xp-title{
+
+height:30px;
+
+background:linear-gradient(#0058E6,#2B84FF);
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 8px;
+
+cursor:move;
+
+font-weight:bold;
+
+}
+
+.xp-content{
+
+padding:18px;
+
+}
+
+.close{
+
+width:26px;
+
+height:22px;
+
+cursor:pointer;
+
+}
