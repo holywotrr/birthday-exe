@@ -1,48 +1,81 @@
+/* =====================================
+   Birthday.exe
+   Window Engine
+===================================== */
+
 let highestZ = 100;
 
-function createWindow(title, content, width = 380, height = 220) {
+/* Create a Window */
+
+function createWindow({
+
+    id = "",
+    title = "Window",
+    width = 420,
+    height = 280,
+    content = ""
+
+}){
+
+    const layer = document.getElementById("windowLayer");
 
     const win = document.createElement("div");
 
-    win.className = "xp-window";
+    win.className = "xpWindow";
+
+    if(id) win.id = id;
 
     win.style.width = width + "px";
     win.style.height = height + "px";
 
-    win.style.left = Math.random() * 250 + 150 + "px";
-    win.style.top = Math.random() * 120 + 80 + "px";
+    win.style.left = (window.innerWidth/2-width/2)+"px";
+    win.style.top = (window.innerHeight/2-height/2-40)+"px";
 
     win.style.zIndex = highestZ++;
 
     win.innerHTML = `
-    
-        <div class="xp-title">
 
-            <span>${title}</span>
+<div class="windowTitle">
 
-            <button class="close">✕</button>
+<div class="windowText">
 
-        </div>
+${title}
 
-        <div class="xp-content">
+</div>
 
-            ${content}
+<div class="windowButtons">
 
-        </div>
+<button class="windowClose">
 
-    `;
+✕
 
-    document.body.appendChild(win);
+</button>
+
+</div>
+
+</div>
+
+<div class="windowBody">
+
+${content}
+
+</div>
+
+`;
+
+    layer.appendChild(win);
 
     makeDraggable(win);
 
-    win.onclick = () => {
+    win.addEventListener("mousedown",()=>{
 
-        win.style.zIndex = highestZ++;
+        bringToFront(win);
 
-    };
+    });
 
-    win.querySelector(".close").onclick = () => {
+    win
+    .querySelector(".windowClose")
+    .onclick=()=>{
 
         win.remove();
 
@@ -52,41 +85,69 @@ function createWindow(title, content, width = 380, height = 220) {
 
 }
 
+/* ========================= */
+
+function bringToFront(win){
+
+    win.style.zIndex = highestZ++;
+
+}
+
+/* ========================= */
+
 function makeDraggable(win){
 
-const title=win.querySelector(".xp-title");
+    const title = win.querySelector(".windowTitle");
 
-let x=0;
-let y=0;
+    let offsetX = 0;
+    let offsetY = 0;
 
-title.onmousedown=(e)=>{
+    let dragging = false;
 
-x=e.clientX;
-y=e.clientY;
+    title.addEventListener("mousedown",(e)=>{
 
-document.onmousemove=drag;
-document.onmouseup=stop;
+        dragging = true;
 
-};
+        offsetX =
+        e.clientX-win.offsetLeft;
 
-function drag(e){
+        offsetY =
+        e.clientY-win.offsetTop;
 
-const dx=x-e.clientX;
-const dy=y-e.clientY;
+        bringToFront(win);
 
-x=e.clientX;
-y=e.clientY;
+    });
 
-win.style.left=(win.offsetLeft-dx)+"px";
-win.style.top=(win.offsetTop-dy)+"px";
+    document.addEventListener("mousemove",(e)=>{
+
+        if(!dragging) return;
+
+        win.style.left =
+        e.clientX-offsetX+"px";
+
+        win.style.top =
+        e.clientY-offsetY+"px";
+
+    });
+
+    document.addEventListener("mouseup",()=>{
+
+        dragging=false;
+
+    });
 
 }
 
-function stop(){
+/* ========================= */
 
-document.onmousemove=null;
-document.onmouseup=null;
+function closeAllWindows(){
 
-}
+    document
+    .querySelectorAll(".xpWindow")
+    .forEach(win=>{
+
+        win.remove();
+
+    });
 
 }
