@@ -189,29 +189,25 @@ Continue
 
     });
 
-    setTimeout(() => {
+   setTimeout(() => {
 
-        const btn = document.getElementById("continueButton");
+    const btn = document.getElementById("continueButton");
 
-        if (!btn) return;
+    if (!btn) return;
 
-        btn.onclick = () => {
+    btn.onclick = () => {
 
-            btn.disabled = true;
+        btn.disabled = true;
+        btn.innerText = "Loading...";
 
-            btn.innerText = "Loading...";
+        setTimeout(() => {
 
-            /*
-            NEXT MILESTONE
+            closeAllWindows();
 
-            This launches
+            createVirusPopup();
 
-            popupEngine.js
+        }, 3000);
 
-            */
+    };
 
-        };
-
-    }, 50);
-
-}
+}, 50);
