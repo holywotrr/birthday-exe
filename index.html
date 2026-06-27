@@ -1,431 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday.exe</title>
 
-<title>Birthday.exe</title>
+    <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ===================== -->
-<!-- BOOT SCREEN -->
-<!-- ===================== -->
+    <!-- ========================= -->
+    <!-- Boot Screen -->
+    <!-- ========================= -->
 
-<section id="bootScreen">
+    <section id="bootScreen">
 
-    <div class="boot-center">
+        <div class="boot-center">
 
-        <h1 class="boot-title">
-            Microsoft Windows XP
-        </h1>
+            <h1 class="boot-title">
+                Microsoft Windows XP
+            </h1>
 
-        <div class="loading-box">
+            <div class="loading-box">
+                <div id="loadingBar"></div>
+            </div>
 
-            <div id="loadingBar"></div>
+            <p class="boot-text">
+                Starting Windows...
+            </p>
 
         </div>
 
-        <p class="boot-text">
+    </section>
 
-            Starting Windows...
+    <!-- ========================= -->
+    <!-- Login -->
+    <!-- ========================= -->
 
-        </p>
+    <section id="loginScreen" class="hidden">
 
-    </div>
+        <div id="loginWindow">
 
-</section>
+            <h2>Welcome</h2>
 
-<!-- ===================== -->
-<!-- LOGIN -->
-<!-- ===================== -->
+            <p>
+                Enter your username.<br>
+                (Make sure it's actually your name.)
+            </p>
 
-<section id="loginScreen" class="hidden">
+            <input
+                id="username"
+                type="text"
+                placeholder="Ashley">
 
-<div id="loginWindow">
+            <input
+                id="password"
+                type="password"
+                placeholder="Password (anything works)">
 
-<h2>
-
-Welcome
-
-</h2>
-
-<p>
-
-Enter your username.
-
-(Make sure it's actually your name.)
-
-</p>
-
-<input
-id="username"
-type="text"
-placeholder="Ashley">
-
-<input
-id="password"
-type="password"
-placeholder="Password (anything works)">
-
-<button id="loginButton">
-
-Log In
-
-</button>
-
-</div>
-
-</section>
-
-<!-- ===================== -->
-<!-- DESKTOP -->
-<!-- ===================== -->
-
-<section id="desktop" class="hidden">
-
-<img
-id="wallpaper"
-src="assets/wallpapers/bliss.jpg"
-alt="Wallpaper">
-
-<div id="desktopIcons">
-
-<div class="icon" id="birthdayIcon">
-
-<img
-src="assets/icons/birthday.png"
-alt="Birthday">
-
-<p id="birthdayLabel">
-
-Birthday.exe
-
-</p>
-
-</div>
-
-<div class="icon">
-
-<img
-src="assets/icons/computer.png"
-alt="Computer">
-
-<p>
-
-My Computer
-
-</p>
-
-</div>
-
-<div class="icon">
-
-<img
-src="assets/icons/recycle.png"
-alt="Recycle">
-
-<p>
-
-Recycle Bin
-
-</p>
-
-</div>
-
-<div class="icon">
-
-<img
-src="assets/icons/folder.png"
-alt="Folder">
-
-<p>
-
-My Documents
-
-</p>
-
-</div>
-
-</div>
-
-<!-- Windows get created here -->
-
-<div id="windowLayer"></div>
-
-<!-- ===================== -->
-<!-- TASKBAR -->
-<!-- ===================== -->
-
-<footer id="taskbar">
-
-<button id="startButton">
-
-🟢 Start
-
-</button>
-
-<div id="taskbarApps">
-
-</div>
-
-<div id="clock">
-
-12:00 PM
-
-</div>
-
-</footer>
-
-</section>
-
-<!-- ===================== -->
-<!-- AUDIO -->
-<!-- ===================== -->
-
-<audio
-id="startupSound"
-src="assets/sounds/startup.mp3"></audio>
-
-<audio
-id="errorSound"
-src="assets/sounds/error.mp3"></audio>
-
-<audio
-id="clickSound"
-src="assets/sounds/click.mp3"></audio>
-
-<!-- ===================== -->
-
-<script src="js/windows.js"></script>
-
-<script src="js/main.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Birthday.exe</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-<!-- ===================== -->
-<!-- BOOT SCREEN -->
-<!-- ===================== -->
-
-<section id="bootScreen">
-
-    <div class="boot-center">
-
-        <h1 class="boot-title">
-            Microsoft Windows XP
-        </h1>
-
-        <div class="loading-box">
-
-            <div id="loadingBar"></div>
+            <button id="loginButton">
+                Log In
+            </button>
 
         </div>
 
-        <p class="boot-text">
+    </section>
 
-            Starting Windows...
+    <!-- ========================= -->
+    <!-- Desktop -->
+    <!-- ========================= -->
 
-        </p>
+    <section id="desktop" class="hidden">
 
-    </div>
+        <img
+            id="wallpaper"
+            src="assets/wallpapers/bliss.jpg"
+            alt="Wallpaper">
 
-</section>
+        <div id="desktopIcons">
 
-<!-- ===================== -->
-<!-- LOGIN -->
-<!-- ===================== -->
+            <div class="icon" id="birthdayIcon">
 
-<section id="loginScreen" class="hidden">
+                <img
+                    src="assets/icons/birthday.png"
+                    alt="Birthday">
 
-<div id="loginWindow">
+                <p id="birthdayLabel">
+                    Birthday.exe
+                </p>
 
-<h2>
+            </div>
 
-Welcome
+            <div class="icon">
 
-</h2>
+                <img
+                    src="assets/icons/computer.png"
+                    alt="Computer">
 
-<p>
+                <p>My Computer</p>
 
-Enter your username.
+            </div>
 
-(Make sure it's actually your name.)
+            <div class="icon">
 
-</p>
+                <img
+                    src="assets/icons/recycle.png"
+                    alt="Recycle">
 
-<input
-id="username"
-type="text"
-placeholder="Ashley">
+                <p>Recycle Bin</p>
 
-<input
-id="password"
-type="password"
-placeholder="Password (anything works)">
+            </div>
 
-<button id="loginButton">
+            <div class="icon">
 
-Log In
+                <img
+                    src="assets/icons/folder.png"
+                    alt="Folder">
 
-</button>
+                <p>My Documents</p>
 
-</div>
+            </div>
 
-</section>
+        </div>
 
-<!-- ===================== -->
-<!-- DESKTOP -->
-<!-- ===================== -->
+        <!-- Windows get created here -->
 
-<section id="desktop" class="hidden">
+        <div id="windowLayer"></div>
 
-<img
-id="wallpaper"
-src="assets/wallpapers/bliss.jpg"
-alt="Wallpaper">
+        <!-- ========================= -->
+        <!-- Taskbar -->
+        <!-- ========================= -->
 
-<div id="desktopIcons">
+        <footer id="taskbar">
 
-<div class="icon" id="birthdayIcon">
+            <button id="startButton">
+                🟢 Start
+            </button>
 
-<img
-src="assets/icons/birthday.png"
-alt="Birthday">
+            <div id="taskbarApps"></div>
 
-<p id="birthdayLabel">
+            <div id="clock">
+                12:00 PM
+            </div>
 
-Birthday.exe
+        </footer>
 
-</p>
+    </section>
 
-</div>
+    <!-- ========================= -->
+    <!-- Audio -->
+    <!-- ========================= -->
 
-<div class="icon">
+    <audio
+        id="startupSound"
+        src="assets/sounds/startup.mp3">
+    </audio>
 
-<img
-src="assets/icons/computer.png"
-alt="Computer">
+    <audio
+        id="errorSound"
+        src="assets/sounds/error.mp3">
+    </audio>
 
-<p>
-
-My Computer
-
-</p>
-
-</div>
-
-<div class="icon">
-
-<img
-src="assets/icons/recycle.png"
-alt="Recycle">
-
-<p>
-
-Recycle Bin
-
-</p>
-
-</div>
-
-<div class="icon">
-
-<img
-src="assets/icons/folder.png"
-alt="Folder">
-
-<p>
-
-My Documents
-
-</p>
-
-</div>
-
-</div>
-
-<!-- Windows get created here -->
-
-<div id="windowLayer"></div>
-
-<!-- ===================== -->
-<!-- TASKBAR -->
-<!-- ===================== -->
-
-<footer id="taskbar">
-
-<button id="startButton">
-
-🟢 Start
-
-</button>
-
-<div id="taskbarApps">
-
-</div>
-
-<div id="clock">
-
-12:00 PM
-
-</div>
-
-</footer>
-
-</section>
-
-<!-- ===================== -->
-<!-- AUDIO -->
-<!-- ===================== -->
-
-<audio
-id="startupSound"
-src="assets/sounds/startup.mp3"></audio>
-
-<audio
-id="errorSound"
-src="assets/sounds/error.mp3"></audio>
-
-<audio
-id="clickSound"
-src="assets/sounds/click.mp3"></audio>
-
-<!-- ===================== -->
-
-<script src="js/windows.js"></script>
-
-<script src="js/popupEngine.js"></script>
-
-<script src="js/main.js"></script>
+    <audio
+        id="clickSound"
+        src="assets/sounds/click.mp3">
+    </audio>
+
+    <!-- ========================= -->
+    <!-- Scripts -->
+    <!-- ========================= -->
+
+    <script src="js/windows.js"></script>
+    <script src="js/popupEngine.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>
