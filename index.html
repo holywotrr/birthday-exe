@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Birthday.exe</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://unpkg.com/98.css">
+
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 
@@ -15,134 +22,88 @@
 
 <!-- BOOT SCREEN -->
 
-<div id="bootScreen">
+<section id="boot">
 
-    <div class="boot-logo">
-        Microsoft Windows XP
-    </div>
+<div class="boot-content">
 
-    <div class="boot-loading">
+<h1>Microsoft Windows XP</h1>
 
-        <div class="loading-bar">
+<div class="loader">
 
-            <div class="loading-fill"></div>
-
-        </div>
-
-        <p>Starting Windows...</p>
-
-    </div>
+<div class="bar"></div>
 
 </div>
+
+<p>Starting Windows...</p>
+
+</div>
+
+</section>
 
 <!-- LOGIN -->
 
-<div id="loginScreen" class="hidden">
+<section id="login" hidden>
 
-    <div class="login-window">
+<div class="window login-window">
 
-        <div class="title-bar">
-            Windows XP Professional
-        </div>
+<div class="title-bar">
 
-        <div class="login-body">
+<div class="title-bar-text">
 
-            <h2>Log On to Windows</h2>
-
-            <label>
-
-                Username
-
-                <input
-                type="text"
-                id="username"
-                placeholder="Make sure it's your real name">
-
-            </label>
-
-            <label>
-
-                Password
-
-                <input
-                type="password"
-                id="password"
-                placeholder="Type anything :)">
-
-            </label>
-
-            <p class="hint">
-                Password isn't checked.
-                You can literally type anything.
-            </p>
-
-            <button id="loginButton">
-
-                OK
-
-            </button>
-
-        </div>
-
-    </div>
+Windows XP Professional
 
 </div>
 
-<!-- DESKTOP -->
+</div>
 
-<div id="desktop" class="hidden">
+<div class="window-body">
 
-    <img
-    class="wallpaper"
-    src="assets/wallpapers/bliss.jpg">
+<p>
 
-    <div id="desktopIcons">
+Please log on to Windows.
 
-        <div class="icon" id="birthdayIcon">
+</p>
 
-            🎂
+<label>
 
-            <span>Birthday.exe</span>
+Username
 
-        </div>
+<input
+id="username"
+type="text"
+placeholder="Use your real name">
 
-        <div class="icon" id="readmeIcon">
+</label>
 
-            📄
+<br><br>
 
-            <span>Readme.txt</span>
+<label>
 
-        </div>
+Password
 
-        <div class="icon" id="picturesIcon">
+<input
+id="password"
+type="password"
+placeholder="Type anything">
 
-            🖼️
+</label>
 
-            <span>Pictures</span>
+<br><br>
 
-        </div>
+<button id="loginBtn">
 
-    </div>
+OK
 
-    <!-- WINDOWS GET SPAWNED HERE -->
-
-    <div id="windowContainer"></div>
-
-    <div id="taskbar">
-
-        <button id="startButton">
-
-            Start
-
-        </button>
-
-        <div id="clock"></div>
-
-    </div>
+</button>
 
 </div>
 
-<script src="script.js"></script>
-    
+</div>
+
+</section>
+
+<script src="js/main.js"></script>
+
 </body>
+
 </html>
