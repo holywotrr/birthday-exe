@@ -1,61 +1,62 @@
-const boot = document.getElementById("boot");
-const login = document.getElementById("login");
+const boot=document.getElementById("boot");
+const login=document.getElementById("login");
+const desktop=document.getElementById("desktop");
 
-setTimeout(() => {
-    boot.style.display = "none";
-    login.hidden = false;
-    login.style.display = "flex";
-}, 4000);
+setTimeout(()=>{
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
+boot.style.display="none";
 
-    if (!username) {
-        alert("Please enter your name.");
-        return;
-    }
+login.hidden=false;
+login.style.display="flex";
 
-    localStorage.setItem("guestName", username);
+},4000);
 
-    alert(`Welcome ${username}!`);
-});const boot = document.getElementById("boot");
-const login = document.getElementById("login");
+document
+.getElementById("loginBtn")
+.onclick=()=>{
 
-setTimeout(() => {
-    boot.style.display = "none";
-    login.hidden = false;
-    login.style.display = "flex";
-}, 4000);
+const username=
+document.getElementById("username").value.trim();
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
+if(username===""){
 
-    if (!username) {
-        alert("Please enter your name.");
-        return;
-    }
+alert("Enter your name!");
 
-    localStorage.setItem("guestName", username);
+return;
 
-    alert(`Welcome ${username}!`);
-});const boot = document.getElementById("boot");
-const login = document.getElementById("login");
+}
 
-setTimeout(() => {
-    boot.style.display = "none";
-    login.hidden = false;
-    login.style.display = "flex";
-}, 4000);
+localStorage.setItem(
+"guest",
+username
+);
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
+login.style.display="none";
 
-    if (!username) {
-        alert("Please enter your name.");
-        return;
-    }
+desktop.hidden=false;
 
-    localStorage.setItem("guestName", username);
+desktop.style.display="block";
 
-    alert(`Welcome ${username}!`);
+updateClock();
+
+setInterval(updateClock,1000);
+
+};
+
+function updateClock(){
+
+const now=new Date();
+
+document
+.getElementById("clock")
+.innerHTML=
+
+now.toLocaleTimeString([],{
+
+hour:"2-digit",
+
+minute:"2-digit"
+
 });
+
+}
