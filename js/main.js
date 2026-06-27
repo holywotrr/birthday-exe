@@ -60,3 +60,36 @@ minute:"2-digit"
 });
 
 }
+
+document
+.getElementById("birthday")
+.ondblclick = () => {
+
+createWindow(
+
+"Birthday.exe",
+
+`
+
+<h3>Hello ${localStorage.getItem("guest")}!</h3>
+
+<p>
+
+You have received
+one new invitation.
+
+</p>
+
+<br>
+
+<button id="openInvite">
+
+Open
+
+</button>
+
+`
+
+);
+
+};
