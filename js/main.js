@@ -1,95 +1,217 @@
-const boot=document.getElementById("boot");
-const login=document.getElementById("login");
-const desktop=document.getElementById("desktop");
+/* ==========================================
+    Birthday.exe
+    Main Controller
+========================================== */
 
-setTimeout(()=>{
+const bootScreen = document.getElementById("bootScreen");
+const loginScreen = document.getElementById("loginScreen");
+const desktop = document.getElementById("desktop");
 
-boot.style.display="none";
+const loginButton = document.getElementById("loginButton");
 
-login.hidden=false;
-login.style.display="flex";
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
 
-},4000);
+const birthdayLabel = document.getElementById("birthdayLabel");
 
-document
-.getElementById("loginBtn")
-.onclick=()=>{
+const clock = document.getElementById("clock");
 
-const username=
-document.getElementById("username").value.trim();
+const startupSound = document.getElementById("startupSound");
+const clickSound = document.getElementById("clickSound");
 
-if(username===""){
+/* ==========================================
+    Boot Sequence
+========================================== */
 
-alert("Enter your name!");
+window.addEventListener("load", () => {
 
-return;
+    setTimeout(() => {
 
-}
+        bootScreen.classList.add("hidden");
 
-localStorage.setItem(
-"guest",
-username
-);
+        loginScreen.classList.remove("hidden");
 
-login.style.display="none";
-
-desktop.hidden=false;
-
-desktop.style.display="block";
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-};
-
-function updateClock(){
-
-const now=new Date();
-
-document
-.getElementById("clock")
-.innerHTML=
-
-now.toLocaleTimeString([],{
-
-hour:"2-digit",
-
-minute:"2-digit"
+    }, 4000);
 
 });
 
+/* ==========================================
+    Login
+========================================== */
+
+loginButton.addEventListener("click", login);
+
+passwordInput.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter") {
+
+        login();
+
+    }
+
+});
+
+usernameInput.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter") {
+
+        login();
+
+    }
+
+});
+
+function login() {
+
+    const username = usernameInput.value.trim();
+
+    if (username === "") {
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+    localStorage.setItem("guestName", username);
+
+    if (startupSound) {
+
+        startupSound.play().catch(() => {});
+
+    }
+
+    loginScreen.classList.add("hidden");
+
+    desktop.classList.remove("hidden");
+
+    birthdayLabel.textContent =
+        username + "'s Invitation.exe";
+
+    startClock();
+
 }
 
-document
-.getElementById("birthday")
-.ondblclick = () => {
+/* ==========================================
+    Clock
+========================================== */
 
-createWindow(
+function startClock() {
 
-"Birthday.exe",
+    updateClock();
 
-`
+    setInterval(updateClock, 1000);
 
-<h3>Hello ${localStorage.getItem("guest")}!</h3>
+}
+
+function updateClock() {
+
+    const now = new Date();
+
+    clock.textContent =
+        now.toLocaleTimeString([], {
+
+            hour: "2-digit",
+
+            minute: "2-digit"
+
+        });
+
+}
+
+/* ==========================================
+    Desktop Icon
+========================================== */
+
+const birthdayIcon = document.getElementById("birthdayIcon");
+
+birthdayIcon.addEventListener("dblclick", () => {
+
+    if (clickSound) {
+
+        clickSound.play().catch(() => {});
+
+    }
+
+    openBirthdayWindow();
+
+});
+
+/* ==========================================
+    Birthday Window
+========================================== */
+
+function openBirthdayWindow() {
+
+    createWindow({
+
+        id: "birthday",
+
+        title: "Birthday.exe",
+
+        width: 460,
+
+        height: 300,
+
+        content: `
+
+<h2>Welcome!</h2>
+
+<br>
 
 <p>
 
-You have received
-one new invitation.
+You have received one new invitation.
 
 </p>
 
 <br>
 
-<button id="openInvite">
+<p>
 
-Open
+Click Continue to continue.
+
+</p>
+
+<br>
+
+<div style="text-align:right;">
+
+<button id="continueButton">
+
+Continue
 
 </button>
 
+</div>
+
 `
 
-);
+    });
 
-};
+    setTimeout(() => {
+
+        const btn = document.getElementById("continueButton");
+
+        if (!btn) return;
+
+        btn.onclick = () => {
+
+            btn.disabled = true;
+
+            btn.innerText = "Loading...";
+
+            /*
+            NEXT MILESTONE
+
+            This launches
+
+            popupEngine.js
+
+            */
+
+        };
+
+    }, 50);
+
+}
