@@ -2,37 +2,60 @@ const boot = document.getElementById("boot");
 const login = document.getElementById("login");
 
 setTimeout(() => {
+    boot.style.display = "none";
+    login.hidden = false;
+    login.style.display = "flex";
+}, 4000);
 
-boot.hidden = true;
+document.getElementById("loginBtn").addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim();
 
-login.hidden = false;
+    if (!username) {
+        alert("Please enter your name.");
+        return;
+    }
 
-},4000);
+    localStorage.setItem("guestName", username);
 
-document
-.getElementById("loginBtn")
-.addEventListener("click",()=>{
+    alert(`Welcome ${username}!`);
+});const boot = document.getElementById("boot");
+const login = document.getElementById("login");
 
-const username=
-document.getElementById("username").value.trim();
+setTimeout(() => {
+    boot.style.display = "none";
+    login.hidden = false;
+    login.style.display = "flex";
+}, 4000);
 
-if(!username){
+document.getElementById("loginBtn").addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim();
 
-alert("Please enter your name.");
+    if (!username) {
+        alert("Please enter your name.");
+        return;
+    }
 
-return;
+    localStorage.setItem("guestName", username);
 
-}
+    alert(`Welcome ${username}!`);
+});const boot = document.getElementById("boot");
+const login = document.getElementById("login");
 
-localStorage.setItem(
-"guestName",
-username
-);
+setTimeout(() => {
+    boot.style.display = "none";
+    login.hidden = false;
+    login.style.display = "flex";
+}, 4000);
 
-alert(
+document.getElementById("loginBtn").addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim();
 
-`Welcome ${username}!`
+    if (!username) {
+        alert("Please enter your name.");
+        return;
+    }
 
-);
+    localStorage.setItem("guestName", username);
 
+    alert(`Welcome ${username}!`);
 });
