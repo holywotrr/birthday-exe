@@ -51,3 +51,42 @@ function createWindow(title, content, width = 380, height = 220) {
     return win;
 
 }
+
+function makeDraggable(win){
+
+const title=win.querySelector(".xp-title");
+
+let x=0;
+let y=0;
+
+title.onmousedown=(e)=>{
+
+x=e.clientX;
+y=e.clientY;
+
+document.onmousemove=drag;
+document.onmouseup=stop;
+
+};
+
+function drag(e){
+
+const dx=x-e.clientX;
+const dy=y-e.clientY;
+
+x=e.clientX;
+y=e.clientY;
+
+win.style.left=(win.offsetLeft-dx)+"px";
+win.style.top=(win.offsetTop-dy)+"px";
+
+}
+
+function stop(){
+
+document.onmousemove=null;
+document.onmouseup=null;
+
+}
+
+}
