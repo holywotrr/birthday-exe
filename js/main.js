@@ -213,7 +213,7 @@ function openXXXFolder() {
         height: 360,
         content: `
             <div style="text-align:center;">
-                <h2>caught you lackin 🤨</h2>
+                <h2>TF U LOOKIN AT? 🤨</h2>
                 <br>
                 <p>side-eye image goes here later</p>
             </div>
