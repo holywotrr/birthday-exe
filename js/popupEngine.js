@@ -220,10 +220,42 @@ function createBirthdayInvitation() {
     });
 
     document.getElementById("acceptBtn").onclick = () => {
-        alert("RSVP saved: I'll be there! 🎉");
+        launchConfetti();
+       
+       const partyAudio = document.getElementById("partySound");
+       partyAudio?.play().catch(() => {});
+
+       alert("RSVP saved: I'll be there! 🎉");
+       
     };
 
     document.getElementById("maybeBtn").onclick = () => {
         alert("RSVP saved: Maybe 👀");
     };
+}
+
+function launchConfetti() {
+    for (let i = 0; i < 80; i++) {
+        const piece = document.createElement("div");
+
+        piece.textContent = ["🎉", "🎂", "💌", "✨", "🎈"][Math.floor(Math.random() * 5)];
+        piece.style.position = "fixed";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = "-40px";
+        piece.style.fontSize = Math.random() * 18 + 18 + "px";
+        piece.style.zIndex = "9999";
+        piece.style.pointerEvents = "none";
+        piece.style.transition = "transform 3s linear, opacity 3s linear";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.style.transform = `translateY(110vh) rotate(${Math.random() * 720}deg)`;
+            piece.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 3200);
+    }
 }
