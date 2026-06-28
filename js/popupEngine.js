@@ -178,13 +178,77 @@ function createBirthdayInvitation() {
     });
 
     document.getElementById("acceptBtn").onclick = () => {
-        spawnYippiePopups();
-        document.getElementById("partySound")?.play().catch(() => {});
-    };
 
-    document.getElementById("maybeBtn").onclick = () => {
-        alert("RSVP saved: Maybe 👀");
-    };
+    // Hide the invitation window
+    closeAllWindows();
+
+    // Spawn the YIPPIE windows
+    spawnYippiePopups();
+
+    // Play your celebration audio
+    document.getElementById("partySound")?.play().catch(() => {});
+
+    // After 3 seconds, close the YIPPIE windows and show a final thank-you
+    setTimeout(() => {
+
+        closeAllWindows();
+
+        createWindow({
+            title: "RSVP Successful!",
+            width: 420,
+            height: 220,
+            content: `
+                <div style="text-align:center;">
+                    <h2>🎉 Thank You! 🎉</h2>
+
+                    <br>
+
+                    <p>
+                        Your RSVP has been received.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I can't wait to celebrate with you! ❤️
+                    </p>
+
+                    <br>
+
+                    <button onclick="this.closest('.xpWindow').remove()">
+                        Finish
+                    </button>
+                </div>
+            `
+        });
+
+    }, 3000);
+
+};
+
+document.getElementById("maybeBtn").onclick = () => {
+
+    createWindow({
+        title: "Maybe?",
+        width: 340,
+        height: 170,
+        content: `
+            <div style="text-align:center;">
+                <p>
+                    No worries! Let me know when you decide. 😊
+                </p>
+
+                <br>
+
+                <button onclick="this.closest('.xpWindow').remove()">
+                    OK
+                </button>
+            </div>
+        `
+       });
+
+   };
+   
 }
 
 function spawnYippiePopups() {
