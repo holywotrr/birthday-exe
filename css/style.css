@@ -301,3 +301,34 @@ body{
     overflow:auto;
     background:#ECE9D8;
 }
+
+/* ===========================
+WELCOME SCREEN
+=========================== */
+
+#welcomeScreen{
+
+    width:100%;
+    height:100%;
+
+    background:#245EDB;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-family:Tahoma, Verdana, sans-serif;
+
+}
+
+#welcomeText{
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    text-shadow:2px 2px 5px rgba(0,0,0,.4);
+
+}
