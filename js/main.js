@@ -81,10 +81,21 @@ function login() {
 
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
-    loginScreen.classList.add("hidden");
-    desktop.classList.remove("hidden");
+   loginScreen.classList.add("hidden");
 
-    startClock();
+   welcomeText.textContent = `Welcome, ${username}`;
+
+   welcomeScreen.classList.remove("hidden");
+
+      setTimeout(() => {
+
+       welcomeScreen.classList.add("hidden");
+
+       desktop.classList.remove("hidden");
+
+       startClock();
+
+   }, 2200);
 }
 
 /* ==========================================
