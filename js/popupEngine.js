@@ -237,12 +237,12 @@ function createBirthdayInvitation() {
 }
 
 function spawnYippiePopups() {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 12; i++) {
         setTimeout(() => {
             createWindow({
                 title: "YIPPIE!!!",
                 width: 300,
-                height: 260,
+                height: 270,
                 x: Math.random() * (window.innerWidth - 330),
                 y: Math.random() * (window.innerHeight - 330),
                 content: `
@@ -251,14 +251,15 @@ function spawnYippiePopups() {
                             src="assets/images/yippie.gif"
                             style="width:220px;height:auto;"
                             alt="Yippie">
+
                         <br><br>
-                        <b>Be there or be square!!</b>
+
+                        <b>RSVP installed successfully!</b>
                     </div>
                 `
             });
         }, i * 180);
     }
 
-    const partyAudio = document.getElementById("partySound");
-    partyAudio?.play().catch(() => {});
+    document.getElementById("partySound")?.play().catch(() => {});
 }
