@@ -129,7 +129,7 @@ document.querySelectorAll(".icon").forEach(icon => {
         icon.addEventListener("dblclick", openRecycleBin);
     }
    
-   if (text === "My Computer") {
+   if (text.includes("Computer")) {
        icon.addEventListener("dblclick", openMyComputer);
     }
 });
