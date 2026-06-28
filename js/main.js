@@ -65,8 +65,6 @@ function login() {
 
     localStorage.setItem("guestName", username);
 
-    birthdayLabel.textContent = `${username}'s Invitation.exe`;
-
    loginScreen.classList.add("hidden");
 desktop.classList.remove("hidden");
 
