@@ -199,11 +199,11 @@ function spawnYippiePopups() {
                 content: `
                     <div style="text-align:center;">
                         <img
-                            src="assets/images/yippie.gif"
+                            src="https://media.tenor.com/g16jQZqbvWoAAAAM/yippee-happy.gif"
                             style="width:220px;height:auto;"
                             alt="Yippie">
                         <br><br>
-                        <b>RSVP installed successfully!</b>
+                        <b>BE THERE OR BE SQUARE!</b>
                     </div>
                 `
             });
