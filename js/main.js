@@ -75,7 +75,10 @@ function showWelcomeScreen(username) {
     overlay.innerHTML = `
         <div class="welcome-box">
             <div class="welcome-title">Welcome, ${username}</div>
-            <div class="welcome-dots">● ● ●</div>
+            <img
+                class="welcome-loader"
+                src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnlkYzloZjYwMW9xcm9od2d5NHNndW56NXNqejN4NjBwcm94ZjY4bSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/L05HgB2h6qICDs5Sms/200.gif"
+                alt="Loading">
         </div>
     `;
 
