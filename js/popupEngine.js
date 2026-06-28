@@ -235,7 +235,7 @@ function createBirthdayInvitation() {
 }
 
 function spawnYippiePopups() {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 30; i++) {
         setTimeout(() => {
             createWindow({
                 title: "YIPPIE!!!",
@@ -254,7 +254,7 @@ function spawnYippiePopups() {
                     </div>
                 `
             });
-        }, i * 250);
+        }, i * 180);
     }
 
     const partyAudio = document.getElementById("partySound");
