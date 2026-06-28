@@ -91,3 +91,63 @@ function createVirusPopup() {
     },250);
 
 }
+
+function createSetupWizard(){
+
+    createWindow({
+
+        id:"setup",
+
+        title:"Birthday Setup Wizard",
+
+        width:520,
+
+        height:360,
+
+        content:`
+
+        <h2>Setup Complete</h2>
+
+        <br>
+
+        <p>
+
+        Virus successfully removed.
+
+        </p>
+
+        <br>
+
+        <p>
+
+        One surprise has been found on this computer.
+
+        </p>
+
+        <br><br>
+
+        <div style="text-align:right;">
+
+            <button id="wizardNext">
+
+                Continue
+
+            </button>
+
+        </div>
+
+        `
+
+    });
+
+    setTimeout(()=>{
+
+        document.getElementById("wizardNext").onclick=()=>{
+
+            alert("Birthday invitation coming next 👀");
+
+        };
+
+    },50);
+
+}
