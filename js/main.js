@@ -72,7 +72,9 @@ startupSound?.play().catch(() => {});
 startClock();
 
 const overlay = document.createElement("div");
+
 overlay.innerText = `Welcome, ${username}`;
+
 overlay.style.position = "fixed";
 overlay.style.inset = "0";
 overlay.style.background = "#245EDB";
@@ -83,13 +85,31 @@ overlay.style.alignItems = "center";
 overlay.style.fontSize = "44px";
 overlay.style.fontWeight = "bold";
 overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
-overlay.style.zIndex = "99999";
 overlay.style.textShadow = "2px 2px 4px black";
+
+overlay.style.opacity = "0";
+overlay.style.transition = "opacity .8s ease";
+
+overlay.style.zIndex = "99999";
 
 document.body.appendChild(overlay);
 
+// Fade In
+requestAnimationFrame(() => {
+    overlay.style.opacity = "1";
+});
+
+// Fade Out
 setTimeout(() => {
-    overlay.remove();
+
+    overlay.style.opacity = "0";
+
+    setTimeout(() => {
+
+        overlay.remove();
+
+    }, 800);
+
 }, 2200);
    
 }
