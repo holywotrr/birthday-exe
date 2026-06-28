@@ -264,6 +264,62 @@ function openXXXFolder() {
 
 }
 
+document.querySelectorAll(".icon").forEach(icon => {
+    const label = icon.querySelector("p");
+
+    if (label && label.textContent.trim() === "Recycle Bin") {
+        icon.addEventListener("dblclick", openRecycleBin);
+    }
+});
+
+function openRecycleBin() {
+    createWindow({
+        title: "Recycle Bin",
+        width: 560,
+        height: 350,
+        content: `
+            <h3>Recycle Bin</h3>
+            <br>
+
+            <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
+                <div onclick="openTrashFile('men')" style="cursor:pointer;">
+                    <div style="font-size:42px;">🗑️</div>
+                    <p>men.txt</p>
+                </div>
+
+                <div onclick="openTrashFile('trump')" style="cursor:pointer;">
+                    <div style="font-size:42px;">🗑️</div>
+                    <p>trump.txt</p>
+                </div>
+
+                <div onclick="openTrashFile('gojo')" style="cursor:pointer;">
+                    <div style="font-size:42px;">🗑️</div>
+                    <p>gojo.txt</p>
+                </div>
+            </div>
+        `
+    });
+}
+
+function openTrashFile(type) {
+    const jokes = {
+        men: "File deleted for emotional safety.",
+        trump: "File deleted by public demand.",
+        gojo: "File deleted... but somehow still came back."
+    };
+
+    createWindow({
+        title: type + ".txt",
+        width: 380,
+        height: 210,
+        content: `
+            <p><b>Status:</b> Could not restore file.</p>
+            <br>
+            <p><b>Reason:</b> ${jokes[type]}</p>
+        `
+    });
+}
+
 /* Birthday Window */
 
 function openBirthdayWindow() {
