@@ -90,18 +90,18 @@ function login() {
 function startClock() {
     updateClock();
     setInterval(updateClock, 1000);
-
 }
 
 function updateClock() {
+    const clockElement = document.getElementById("clock");
+
     const now = new Date();
 
-    clock.textContent = now.toLocaleTimeString([], {
+    clockElement.innerText = now.toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
         hour12: true
     });
-
 }
 
 /* ==========================================
