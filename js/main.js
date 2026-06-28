@@ -189,25 +189,27 @@ Continue
 
     });
 
-   setTimeout(() => {
+    setTimeout(() => {
 
-    const btn = document.getElementById("continueButton");
+        const btn = document.getElementById("continueButton");
 
-    if (!btn) return;
+        if (!btn) return;
 
-    btn.onclick = () => {
+        btn.onclick = () => {
 
-        btn.disabled = true;
-        btn.innerText = "Loading...";
+            btn.disabled = true;
+            btn.innerText = "Loading...";
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            closeAllWindows();
+                closeAllWindows();
 
-            createVirusPopup();
+                createVirusPopup();
 
-        }, 3000);
+            }, 3000);
 
-    };
+        };
 
-}, 50);
+    }, 50);
+
+}
