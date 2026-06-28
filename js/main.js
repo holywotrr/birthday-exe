@@ -185,9 +185,3 @@ function openBirthdayWindow() {
         };
     }, 50);
 }
-
-@keyframes loadingDots{
-    0%{opacity:.25;}
-    50%{opacity:1;}
-    100%{opacity:.25;}
-}
