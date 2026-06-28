@@ -95,13 +95,21 @@ function startClock() {
 function updateClock() {
     const clockElement = document.getElementById("clock");
 
+    if (!clockElement) {
+        console.log("Clock element not found");
+        return;
+    }
+
     const now = new Date();
 
-    clockElement.innerText = now.toLocaleTimeString("en-US", {
+    const time = now.toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
         hour12: true
     });
+
+    clockElement.textContent = time;
+    console.log("Clock updated:", time);
 }
 
 /* ==========================================
