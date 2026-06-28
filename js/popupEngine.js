@@ -12,6 +12,8 @@ function createVirusPopup() {
         "Birthday.exe cannot be deleted.",
         "Cake.dll has been installed.",
         "Friendship.exe is running in the background."
+        "You're gay."
+      
     ];
 
     let amount = 0;
@@ -46,7 +48,7 @@ function createVirusPopup() {
 
         document.getElementById("errorSound")?.play().catch(() => {});
 
-        if (amount >= 10) {
+        if (amount >= 50) {
             clearInterval(interval);
 
             setTimeout(() => {
@@ -54,7 +56,7 @@ function createVirusPopup() {
                 createSetupWizard();
             }, 1600);
         }
-    }, 250);
+    }, 120);
 }
 
 function createSetupWizard() {
