@@ -77,7 +77,7 @@ function showWelcomeScreen(username) {
             <div class="welcome-title">Welcome, ${username}</div>
             <img
                 class="welcome-loader"
-                src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnlkYzloZjYwMW9xcm9od2d5NHNndW56NXNqejN4NjBwcm94ZjY4bSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/L05HgB2h6qICDs5Sms/200.gif"
+                src="https://media.tenor.com/ggWF2p1Xu_IAAAAj/loading-windows.gif"
                 alt="Loading">
         </div>
     `;
