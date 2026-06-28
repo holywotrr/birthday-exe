@@ -306,48 +306,21 @@ body{
 WELCOME SCREEN
 =========================== */
 
-#welcomeScreen{
-
-    position:fixed;
-
-    inset:0;
-
-    background:#245EDB;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:opacity .8s ease;
-
-    z-index:9999;
-
+.welcome-box{
+    text-align:center;
+    text-shadow:2px 2px 4px black;
 }
 
-#welcomeScreen.show{
-
-    opacity:1;
-
-}
-
-#welcomeText{
-
-    color:white;
-
+.welcome-title{
     font-size:44px;
-
     font-weight:bold;
+}
 
-    font-family:Tahoma, Verdana, sans-serif;
-
-    text-shadow:2px 2px 4px rgba(0,0,0,.5);
-
+.welcome-dots{
+    margin-top:28px;
+    font-size:22px;
+    letter-spacing:6px;
+    animation:loadingDots 1s infinite;
 }
 
 @keyframes loadingDots{
