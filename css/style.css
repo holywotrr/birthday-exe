@@ -1,41 +1,240 @@
 /* ===========================
-DESKTOP
+   GLOBAL
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Tahoma, Verdana, sans-serif;
+    background:black;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* ===========================
+   BOOT
+=========================== */
+
+#bootScreen{
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.boot-center{
+    text-align:center;
+}
+
+.boot-title{
+    font-size:42px;
+    margin-bottom:40px;
+}
+
+.loading-box{
+    width:280px;
+    height:22px;
+    border:2px solid white;
+    margin:auto;
+    overflow:hidden;
+}
+
+#loadingBar{
+    width:0%;
+    height:100%;
+    background:#2b87ff;
+    animation:boot 4s linear forwards;
+}
+
+@keyframes boot{
+    from{width:0%;}
+    to{width:100%;}
+}
+
+.boot-text{
+    margin-top:25px;
+    font-size:18px;
+}
+
+/* ===========================
+   LOGIN
+=========================== */
+
+#loginScreen{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#245EDB;
+}
+
+#loginWindow{
+    width:380px;
+    background:#ECE9D8;
+    border:3px solid #0A246A;
+    border-radius:7px;
+    padding:25px;
+    box-shadow:10px 10px 25px rgba(0,0,0,.4);
+}
+
+#loginWindow h2{
+    color:#003399;
+    margin-bottom:12px;
+}
+
+#loginWindow p{
+    margin-bottom:18px;
+    line-height:1.4;
+}
+
+#loginWindow input{
+    width:100%;
+    margin-top:10px;
+    margin-bottom:15px;
+    padding:10px;
+    border:1px solid #888;
+    outline:none;
+    font-size:15px;
+}
+
+#loginButton{
+    width:100%;
+    padding:11px;
+    background:#2F71FF;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+#loginButton:hover{
+    background:#1558F5;
+}
+
+/* ===========================
+   DESKTOP
 =========================== */
 
 #desktop{
-    position:fixed;
-    inset:0;
+    position:relative;
+    width:100%;
+    height:100%;
     overflow:hidden;
-    background:#000;
 }
+
+/* Wallpaper */
 
 #wallpaper{
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-
+    object-position:center;
     z-index:0;
-
     pointer-events:none;
 }
+
+/* Desktop Icons */
 
 #desktopIcons{
     position:absolute;
     left:18px;
     top:18px;
-
     display:flex;
     flex-direction:column;
     gap:20px;
-
     z-index:2;
 }
+
+.icon{
+    width:90px;
+    text-align:center;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.icon:hover{
+    transform:scale(1.05);
+}
+
+.icon img{
+    width:52px;
+    height:52px;
+}
+
+.icon p{
+    color:white;
+    margin-top:7px;
+    font-size:13px;
+    text-shadow:1px 1px 3px black;
+}
+
+/* ===========================
+   TASKBAR
+=========================== */
+
+#taskbar{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:42px;
+    background:#245EDB;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 10px;
+    border-top:2px solid #6CAEFF;
+    z-index:20;
+}
+
+#startButton{
+    width:90px;
+    height:31px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#3CAF34;
+    color:white;
+}
+
+#startButton:hover{
+    filter:brightness(110%);
+}
+
+#taskbarApps{
+    flex:1;
+    margin-left:20px;
+}
+
+#clock{
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* ===========================
+   WINDOW LAYER
+=========================== */
 
 #windowLayer{
     position:absolute;
@@ -44,13 +243,49 @@ DESKTOP
     pointer-events:none;
 }
 
-#taskbar{
+/* ===========================
+   WINDOWS
+=========================== */
+
+.xpWindow{
     position:absolute;
-    left:0;
-    bottom:0;
+    background:#ECE9D8;
+    border:2px solid #0A246A;
+    box-shadow:8px 8px 18px rgba(0,0,0,.45);
+    overflow:hidden;
+    pointer-events:auto;
+}
 
-    width:100%;
-    height:42px;
+.windowTitle{
+    height:30px;
+    background:linear-gradient(#0058E6,#2D7FFF);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 8px;
+    cursor:move;
+    color:white;
+    font-weight:bold;
+}
 
-    z-index:20;
+.windowButtons{
+    display:flex;
+    gap:4px;
+}
+
+.windowClose{
+    width:26px;
+    height:22px;
+    border:none;
+    cursor:pointer;
+    background:#E53935;
+    color:white;
+    font-weight:bold;
+}
+
+.windowBody{
+    padding:18px;
+    height:calc(100% - 30px);
+    overflow:auto;
+    background:#ECE9D8;
 }
