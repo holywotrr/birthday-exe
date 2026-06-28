@@ -20,8 +20,6 @@ const clickSound = document.getElementById("clickSound");
 
 let clockInterval = null;
 
-/* Boot */
-
 window.addEventListener("load", () => {
     setTimeout(() => {
         bootScreen.classList.add("hidden");
@@ -29,28 +27,16 @@ window.addEventListener("load", () => {
     }, 3500);
 });
 
-/* Login */
-
 loginButton.addEventListener("click", login);
-
-usernameInput.addEventListener("keydown", e => {
-    if (e.key === "Enter") login();
-});
-
-passwordInput.addEventListener("keydown", e => {
-    if (e.key === "Enter") login();
-});
+usernameInput.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
+passwordInput.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 
 function login() {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
-
     const correctPassword = "YURI";
 
-    if (!username) {
-        alert("Please enter your name.");
-        return;
-    }
+    if (!username) return alert("Please enter your name.");
 
     if (password !== correctPassword) {
         alert("Incorrect password.");
@@ -63,11 +49,8 @@ function login() {
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
     loginScreen.classList.add("hidden");
-
     showWelcomeScreen(username);
 }
-
-/* Welcome Screen */
 
 function showWelcomeScreen(username) {
     const overlay = document.createElement("div");
@@ -75,10 +58,7 @@ function showWelcomeScreen(username) {
     overlay.innerHTML = `
         <div class="welcome-box">
             <div class="welcome-title">Welcome, ${username}</div>
-            <img
-                class="welcome-loader"
-                src="https://media.tenor.com/ggWF2p1Xu_IAAAAj/loading-windows.gif"
-                alt="Loading">
+            <img class="welcome-loader" src="https://media.tenor.com/ggWF2p1Xu_IAAAAj/loading-windows.gif" alt="Loading">
         </div>
     `;
 
@@ -96,9 +76,7 @@ function showWelcomeScreen(username) {
 
     document.body.appendChild(overlay);
 
-    setTimeout(() => {
-        overlay.style.opacity = "1";
-    }, 50);
+    setTimeout(() => overlay.style.opacity = "1", 50);
 
     setTimeout(() => {
         overlay.style.opacity = "0";
@@ -110,30 +88,17 @@ function showWelcomeScreen(username) {
             desktop.style.opacity = "0";
             desktop.style.transition = "opacity 1s ease";
 
-            if (startupSound) {
-                startupSound.play().catch(() => {});
-            }
-
+            if (startupSound) startupSound.play().catch(() => {});
             startClock();
 
-            setTimeout(() => {
-                desktop.style.opacity = "1";
-            }, 50);
-
+            setTimeout(() => desktop.style.opacity = "1", 50);
         }, 1000);
-
     }, 2600);
 }
 
-/* Clock */
-
 function startClock() {
     updateClock();
-
-    if (clockInterval) {
-        clearInterval(clockInterval);
-    }
-
+    if (clockInterval) clearInterval(clockInterval);
     clockInterval = setInterval(updateClock, 1000);
 }
 
@@ -145,23 +110,23 @@ function updateClock() {
     });
 }
 
-/* Desktop Icon */
-
 birthdayIcon.addEventListener("dblclick", () => {
-    if (clickSound) {
-        clickSound.play().catch(() => {});
-    }
-
+    if (clickSound) clickSound.play().catch(() => {});
     openBirthdayWindow();
 });
 
-const documentIcons = document.querySelectorAll(".icon");
-
-documentIcons.forEach(icon => {
+document.querySelectorAll(".icon").forEach(icon => {
     const label = icon.querySelector("p");
+    if (!label) return;
 
-    if (label && label.textContent.trim() === "My Documents") {
+    const text = label.textContent.trim();
+
+    if (text === "My Documents") {
         icon.addEventListener("dblclick", openMyDocuments);
+    }
+
+    if (text === "Recycle Bin") {
+        icon.addEventListener("dblclick", openRecycleBin);
     }
 });
 
@@ -172,16 +137,14 @@ function openMyDocuments() {
         height: 360,
         content: `
             <h3>My Documents</h3>
-
             <br>
-
             <div style="display:flex;gap:35px;text-align:center;">
-                <div onclick="openCollegeFolder('College Stuff')" style="cursor:pointer;">
+                <div onclick="openCollegeFolder()" style="cursor:pointer;">
                     <div style="font-size:42px;">📁</div>
-                    <p>School Stuff</p>
+                    <p>College Stuff</p>
                 </div>
 
-                <div onclick="openPersonalFolder('Personal')" style="cursor:pointer;">
+                <div onclick="openPersonalFolder()" style="cursor:pointer;">
                     <div style="font-size:42px;">📁</div>
                     <p>Personal</p>
                 </div>
@@ -195,30 +158,25 @@ function openMyDocuments() {
     });
 }
 
-function openCollegeFolder('College Stuff') {
+function openCollegeFolder() {
     createWindow({
         title: "College Stuff",
         width: 380,
         height: 220,
-        content: `
-            <p>School's next month gangalang <3</p>
-        `
+        content: `<p>School's next month gangalang &lt;3</p>`
     });
 }
 
-function openPersonalFolder('Personal') {
+function openPersonalFolder() {
     createWindow({
         title: "Personal",
         width: 380,
         height: 220,
-        content: `
-            <p>Nunya business... I like girls</p>
-        `
+        content: `<p>Nunya business... I like girls</p>`
     });
 }
 
 function openXXXFolder() {
-
     const loadingWin = createWindow({
         title: "xxx",
         width: 360,
@@ -226,16 +184,13 @@ function openXXXFolder() {
         content: `
             <div style="text-align:center;">
                 <h3>Loading...</h3>
-
                 <br>
-
                 <p>Opening folder contents...</p>
             </div>
         `
     });
 
     setTimeout(() => {
-
         loadingWin.remove();
 
         createWindow({
@@ -244,33 +199,15 @@ function openXXXFolder() {
             height: 430,
             content: `
                 <div style="text-align:center;">
-
-                    <img
-                        src="assets/images/sideeye.png"
-                        style="width:280px;border-radius:6px;"
-                        alt="Side eye">
-
+                    <img src="assets/images/sideeye.png" style="width:280px;border-radius:6px;" alt="Side eye">
                     <br><br>
-
                     <h3>gang...</h3>
-
                     <p>Watchu looking at?</p>
-
                 </div>
             `
         });
-
     }, 1200);
-
 }
-
-document.querySelectorAll(".icon").forEach(icon => {
-    const label = icon.querySelector("p");
-
-    if (label && label.textContent.trim() === "Recycle Bin") {
-        icon.addEventListener("dblclick", openRecycleBin);
-    }
-});
 
 function openRecycleBin() {
     createWindow({
@@ -280,7 +217,6 @@ function openRecycleBin() {
         content: `
             <h3>Recycle Bin</h3>
             <br>
-
             <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
                 <div onclick="openTrashFile('men')" style="cursor:pointer;">
                     <div style="font-size:42px;">🗑️</div>
@@ -320,8 +256,6 @@ function openTrashFile(type) {
     });
 }
 
-/* Birthday Window */
-
 function openBirthdayWindow() {
     createWindow({
         id: "birthday",
@@ -330,11 +264,8 @@ function openBirthdayWindow() {
         height: 320,
         content: `
             <h2>Welcome!</h2>
-
             <p>You have received one new invitation.</p>
-
             <br>
-
             <div style="text-align:right;">
                 <button id="continueButton">Continue</button>
             </div>
@@ -343,7 +274,6 @@ function openBirthdayWindow() {
 
     setTimeout(() => {
         const btn = document.getElementById("continueButton");
-
         if (!btn) return;
 
         btn.onclick = () => {
