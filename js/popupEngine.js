@@ -1,103 +1,93 @@
-/* ==========================================
-    Birthday.exe
-    Popup Engine
-========================================== */
+function createVirusPopup() {
 
-let popupCount = 0;
+    const messages = [
 
-const VIRUS_MESSAGES = [
+        "A fatal exception has occurred.",
 
-"Birthday.exe is trying to install itself.",
+        "System32 has been corrupted.",
 
-"Too many memories were found.",
+        "Virus detected.",
 
-"Cake.dll has stopped responding.",
+        "Memory access violation.",
 
-"Friendship.exe cannot be removed.",
+        "Windows encountered a problem."
 
-"Windows has detected excessive fun.",
-
-"Installing birthday virus..."
-
-];
-
-function randomMessage(){
-
-    return VIRUS_MESSAGES[
-        Math.floor(
-            Math.random()*VIRUS_MESSAGES.length
-        )
     ];
 
-}
+    let amount = 0;
 
-function createVirusPopup(){
+    const interval = setInterval(() => {
 
-    popupCount++;
+        amount++;
 
-    const win=createWindow({
+        createWindow({
 
-        title:"Windows Security Center",
+            id: "virus" + amount,
 
-        width:340,
+            title: "Windows Error",
 
-        height:180,
+            width: 320,
 
-        content:`
+            height: 170,
 
-<p>
+            x: Math.random() * (window.innerWidth - 340),
 
-⚠ ${randomMessage()}
+            y: Math.random() * (window.innerHeight - 220),
 
-</p>
+            content: `
 
-<br>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
 
-<div style="text-align:right;">
+                    <div style="font-size:34px;">
+                        ⚠
+                    </div>
 
-<button class="virusOK">
+                    <div>
 
-OK
+                        <b>Error</b>
 
-</button>
+                        <br><br>
 
-</div>
+                        ${messages[Math.floor(Math.random()*messages.length)]}
 
-`
+                    </div>
 
-    });
+                </div>
 
-    /* random position */
+                <br>
 
-    win.style.left=
+                <div style="text-align:right;">
 
-    Math.random()*
-    (window.innerWidth-360)
+                    <button onclick="this.closest('.xpWindow').remove()">
 
-    +"px";
+                        OK
 
-    win.style.top=
+                    </button>
 
-    Math.random()*
-    (window.innerHeight-250)
+                </div>
 
-    +"px";
+            `
 
-    const btn=
+        });
 
-    win.querySelector(".virusOK");
+        const sound = document.getElementById("errorSound");
 
-    btn.onclick=()=>{
+        sound?.play().catch(()=>{});
 
-        win.remove();
+        if(amount >= 10){
 
-        if(popupCount<18){
+            clearInterval(interval);
 
-            createVirusPopup();
-            createVirusPopup();
+            setTimeout(() => {
+
+                closeAllWindows();
+
+                createSetupWizard();
+
+            },2000);
 
         }
 
-    };
+    },250);
 
 }
