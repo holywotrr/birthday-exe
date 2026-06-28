@@ -208,40 +208,48 @@ function openNormalFolder(name) {
 
 function openXXXFolder() {
 
-    createWindow({
-
+    const loadingWin = createWindow({
         title: "xxx",
-
-        width: 450,
-
-        height: 430,
-
+        width: 360,
+        height: 180,
         content: `
+            <div style="text-align:center;">
+                <h3>Loading...</h3>
 
-        <div style="text-align:center;">
+                <br>
 
-            <img
-                src="assets/images/sideeye.png"
-                style="
-                    width:280px;
-                    border-radius:6px;
-                ">
-
-            <br><br>
-
-            <h3>
-                bro...
-            </h3>
-
-            <p>
-                u horny ahh.
-            </p>
-
-        </div>
-
+                <p>Opening folder contents...</p>
+            </div>
         `
-
     });
+
+    setTimeout(() => {
+
+        loadingWin.remove();
+
+        createWindow({
+            title: "xxx",
+            width: 450,
+            height: 430,
+            content: `
+                <div style="text-align:center;">
+
+                    <img
+                        src="assets/images/sideeye.png"
+                        style="width:280px;border-radius:6px;"
+                        alt="Side eye">
+
+                    <br><br>
+
+                    <h3>bro...</h3>
+
+                    <p>caught yo ahh lackin</p>
+
+                </div>
+            `
+        });
+
+    }, 1200);
 
 }
 
