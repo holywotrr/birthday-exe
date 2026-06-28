@@ -1,28 +1,17 @@
-/* ==========================================
-   Birthday.exe
-   Main Controller
-========================================== */
-
-// Screens
 const bootScreen = document.getElementById("bootScreen");
 const loginScreen = document.getElementById("loginScreen");
 const desktop = document.getElementById("desktop");
 
-// Login
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("loginButton");
 
-// Desktop
 const birthdayIcon = document.getElementById("birthdayIcon");
 const birthdayLabel = document.getElementById("birthdayLabel");
 const clock = document.getElementById("clock");
 
-// Sounds
 const startupSound = document.getElementById("startupSound");
 const clickSound = document.getElementById("clickSound");
-
-/* Boot */
 
 window.addEventListener("load", () => {
     setTimeout(() => {
@@ -31,14 +20,10 @@ window.addEventListener("load", () => {
     }, 3500);
 });
 
-/* Login */
-
 loginButton.addEventListener("click", login);
-
 usernameInput.addEventListener("keydown", e => {
     if (e.key === "Enter") login();
 });
-
 passwordInput.addEventListener("keydown", e => {
     if (e.key === "Enter") login();
 });
@@ -46,7 +31,6 @@ passwordInput.addEventListener("keydown", e => {
 function login() {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
-
     const correctPassword = "YURI";
 
     if (!username) {
@@ -67,10 +51,11 @@ function login() {
     loginScreen.classList.add("hidden");
 
     if (startupSound) {
-    startupSound.play().catch(() => {});
+        startupSound.play().catch(() => {});
+    }
+
+    showWelcomeScreen(username);
 }
-   
-/* Welcome Screen */
 
 function showWelcomeScreen(username) {
     const overlay = document.createElement("div");
@@ -78,13 +63,7 @@ function showWelcomeScreen(username) {
     overlay.innerHTML = `
         <div style="text-align:center;">
             <div>Welcome, ${username}</div>
-
-            <div style="
-                margin-top:28px;
-                font-size:22px;
-                letter-spacing:6px;
-                animation:loadingDots 1s infinite;
-            ">
+            <div style="margin-top:28px;font-size:22px;letter-spacing:6px;">
                 ● ● ●
             </div>
         </div>
@@ -123,8 +102,6 @@ function showWelcomeScreen(username) {
     }, 2600);
 }
 
-/* Clock */
-
 let clockInterval = null;
 
 function startClock() {
@@ -145,14 +122,13 @@ function updateClock() {
     });
 }
 
-/* Desktop Icon */
-
 birthdayIcon.addEventListener("dblclick", () => {
     if (clickSound) {
-    clickSound.play().catch(() => {});
-}
-   
-/* Invitation Window */
+        clickSound.play().catch(() => {});
+    }
+
+    openBirthdayWindow();
+});
 
 function openBirthdayWindow() {
     createWindow({
@@ -162,11 +138,8 @@ function openBirthdayWindow() {
         height: 320,
         content: `
             <h2>Welcome!</h2>
-
             <p>You have received one new invitation.</p>
-
             <br>
-
             <div style="text-align:right;">
                 <button id="continueButton">Continue</button>
             </div>
