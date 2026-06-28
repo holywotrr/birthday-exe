@@ -66,11 +66,10 @@ function login() {
 
     loginScreen.classList.add("hidden");
 
-    startupSound?.play().catch(() => {});
-
-    showWelcomeScreen(username);
+    if (startupSound) {
+    startupSound.play().catch(() => {});
 }
-
+   
 /* Welcome Screen */
 
 function showWelcomeScreen(username) {
@@ -149,10 +148,10 @@ function updateClock() {
 /* Desktop Icon */
 
 birthdayIcon.addEventListener("dblclick", () => {
-    clickSound?.play().catch(() => {});
-    openBirthdayWindow();
-});
-
+    if (clickSound) {
+    clickSound.play().catch(() => {});
+}
+   
 /* Invitation Window */
 
 function openBirthdayWindow() {
