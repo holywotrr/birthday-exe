@@ -62,14 +62,21 @@ function login() {
 
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
-    updateClock();
-    setInterval(updateClock, 1000);
+    startClock();
 
 }
 
 /* ==========================================
    Clock
 ========================================== */
+
+function startClock() {
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+}
 
 function updateClock() {
 
@@ -83,7 +90,7 @@ function updateClock() {
 }
 
 /* ==========================================
-   Desktop Icon
+   Desktop
 ========================================== */
 
 const birthdayIcon = document.getElementById("birthdayIcon");
@@ -117,9 +124,19 @@ function openBirthdayWindow() {
         content: `
             <h2>Welcome!</h2>
 
-            <p>You have received one new invitation.</p>
+            <br>
 
-            <p>Click Continue to continue.</p>
+            <p>
+                You have received one new invitation.
+            </p>
+
+            <br>
+
+            <p>
+                Click Continue to continue.
+            </p>
+
+            <br>
 
             <div style="text-align:right;">
                 <button id="continueButton">
@@ -148,7 +165,7 @@ function openBirthdayWindow() {
                 if (typeof createVirusPopup === "function") {
                     createVirusPopup();
                 } else {
-                    alert("popupEngine.js is not loaded.");
+                    alert("popupEngine.js is missing.");
                 }
 
             }, 3000);
