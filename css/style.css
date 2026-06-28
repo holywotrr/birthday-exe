@@ -349,3 +349,9 @@ WELCOME SCREEN
     text-shadow:2px 2px 4px rgba(0,0,0,.5);
 
 }
+
+@keyframes loadingDots{
+    0%{opacity:.25;}
+    50%{opacity:1;}
+    100%{opacity:.25;}
+}
