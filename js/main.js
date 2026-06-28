@@ -207,18 +207,42 @@ function openNormalFolder(name) {
 }
 
 function openXXXFolder() {
+
     createWindow({
+
         title: "xxx",
-        width: 430,
-        height: 360,
+
+        width: 450,
+
+        height: 430,
+
         content: `
-            <div style="text-align:center;">
-                <h2>TF U LOOKIN AT? 🤨</h2>
-                <br>
-                <p>side-eye image goes here later</p>
-            </div>
+
+        <div style="text-align:center;">
+
+            <img
+                src="assets/images/sideeye.png"
+                style="
+                    width:280px;
+                    border-radius:6px;
+                ">
+
+            <br><br>
+
+            <h3>
+                bro...
+            </h3>
+
+            <p>
+                u horny ahh.
+            </p>
+
+        </div>
+
         `
+
     });
+
 }
 
 /* Birthday Window */
