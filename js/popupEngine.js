@@ -199,24 +199,24 @@ function createBirthdayInvitation() {
             height: 220,
             content: `
                 <div style="text-align:center;">
-                    <h2>🎉 Thank You! 🎉</h2>
+                    <h2>🎉 YIPPIEEEEEE 🎉</h2>
 
                     <br>
 
                     <p>
-                        Your RSVP has been received.
+                        UR PARTICIPATION WILL BE WORTH IT
                     </p>
 
                     <br>
 
                     <p>
-                        I can't wait to celebrate with you! ❤️
+                        I can't wait to give you a headache <3
                     </p>
 
                     <br>
 
                     <button onclick="this.closest('.xpWindow').remove()">
-                        Finish
+                        WOWWW
                     </button>
                 </div>
             `
@@ -235,13 +235,13 @@ document.getElementById("maybeBtn").onclick = () => {
         content: `
             <div style="text-align:center;">
                 <p>
-                    No worries! Let me know when you decide. 😊
+                    MAYBE??? nawh pick again.
                 </p>
 
                 <br>
 
                 <button onclick="this.closest('.xpWindow').remove()">
-                    OK
+                    HELLO?
                 </button>
             </div>
         `
