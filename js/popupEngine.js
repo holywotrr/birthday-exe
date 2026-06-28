@@ -199,7 +199,7 @@ function createBirthdayInvitation() {
                 <br>
 
                 <p>
-                    You survived Birthday.exe, so now you're officially invited to my birthday.
+                    You survived Birthday.exe, so now you're officially invited to my birthday!!
                 </p>
 
                 <br>
@@ -207,7 +207,7 @@ function createBirthdayInvitation() {
                 <div style="text-align:left;display:inline-block;line-height:1.9;">
                     <p><b>📅 Date:</b> July 21, 2026</p>
                     <p><b>🕕 Time:</b> 6:00 PM - 10:00 PM / until closing</p>
-                    <p><b>🎮 Theme:</b> Old Windows Virus</p>
+                    <p><b>🎮 Theme:</b> ANYTHING!! (be yourself and bring yourself)</p>
                     <p><b>📍 Location:</b> TBA</p>
                 </div>
 
@@ -250,7 +250,7 @@ function spawnYippiePopups() {
                             style="width:220px;height:auto;"
                             alt="Yippie">
                         <br><br>
-                        <b>RSVP installed successfully!</b>
+                        <b>Be there or be square!!</b>
                     </div>
                 `
             });
