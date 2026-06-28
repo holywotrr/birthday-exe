@@ -66,14 +66,25 @@ function login() {
     localStorage.setItem("guestName", username);
 
    loginScreen.classList.add("hidden");
-desktop.classList.remove("hidden");
 
 startupSound?.play().catch(() => {});
-startClock();
 
 const overlay = document.createElement("div");
 
-overlay.innerText = `Welcome, ${username}`;
+overlay.innerHTML = `
+    <div style="text-align:center;">
+        <div>Welcome, ${username}</div>
+
+        <div style="
+            margin-top:28px;
+            font-size:22px;
+            letter-spacing:6px;
+            animation:loadingDots 1s infinite;
+        ">
+            ● ● ●
+        </div>
+    </div>
+`;
 
 overlay.style.position = "fixed";
 overlay.style.inset = "0";
@@ -86,28 +97,25 @@ overlay.style.fontSize = "44px";
 overlay.style.fontWeight = "bold";
 overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
 overlay.style.textShadow = "2px 2px 4px black";
-
 overlay.style.opacity = "0";
 overlay.style.transition = "opacity .8s ease";
-
 overlay.style.zIndex = "99999";
 
 document.body.appendChild(overlay);
 
-// Fade In
 requestAnimationFrame(() => {
     overlay.style.opacity = "1";
 });
 
-// Fade Out
 setTimeout(() => {
-
     overlay.style.opacity = "0";
 
     setTimeout(() => {
-
         overlay.remove();
 
+        desktop.classList.remove("hidden");
+        birthdayLabel.textContent = `${username}'s Invitation.exe`;
+        startClock();
     }, 800);
 
 }, 2200);
@@ -176,4 +184,10 @@ function openBirthdayWindow() {
             }, 2500);
         };
     }, 50);
+}
+
+@keyframes loadingDots{
+    0%{opacity:.25;}
+    50%{opacity:1;}
+    100%{opacity:.25;}
 }
