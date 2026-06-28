@@ -22,6 +22,10 @@ const clock = document.getElementById("clock");
 const startupSound = document.getElementById("startupSound");
 const clickSound = document.getElementById("clickSound");
 
+// Welcome
+const welcomeScreen = document.getElementById("welcomeScreen");
+const welcomeText = document.getElementById("welcomeText");
+
 /* ==========================================
    Boot
 ========================================== */
