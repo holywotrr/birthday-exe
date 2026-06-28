@@ -1,3 +1,8 @@
+/* ==========================================
+   Birthday.exe
+   Main Controller
+========================================== */
+
 const bootScreen = document.getElementById("bootScreen");
 const loginScreen = document.getElementById("loginScreen");
 const desktop = document.getElementById("desktop");
@@ -13,6 +18,10 @@ const clock = document.getElementById("clock");
 const startupSound = document.getElementById("startupSound");
 const clickSound = document.getElementById("clickSound");
 
+let clockInterval = null;
+
+/* Boot */
+
 window.addEventListener("load", () => {
     setTimeout(() => {
         bootScreen.classList.add("hidden");
@@ -20,10 +29,14 @@ window.addEventListener("load", () => {
     }, 3500);
 });
 
+/* Login */
+
 loginButton.addEventListener("click", login);
+
 usernameInput.addEventListener("keydown", e => {
     if (e.key === "Enter") login();
 });
+
 passwordInput.addEventListener("keydown", e => {
     if (e.key === "Enter") login();
 });
@@ -31,6 +44,7 @@ passwordInput.addEventListener("keydown", e => {
 function login() {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
+
     const correctPassword = "YURI";
 
     if (!username) {
@@ -50,22 +64,18 @@ function login() {
 
     loginScreen.classList.add("hidden");
 
-    if (startupSound) {
-        startupSound.play().catch(() => {});
-    }
-
     showWelcomeScreen(username);
 }
+
+/* Welcome Screen */
 
 function showWelcomeScreen(username) {
     const overlay = document.createElement("div");
 
     overlay.innerHTML = `
-        <div style="text-align:center;">
-            <div>Welcome, ${username}</div>
-            <div style="margin-top:28px;font-size:22px;letter-spacing:6px;">
-                ● ● ●
-            </div>
+        <div class="welcome-box">
+            <div class="welcome-title">Welcome, ${username}</div>
+            <div class="welcome-dots">● ● ●</div>
         </div>
     `;
 
@@ -76,13 +86,10 @@ function showWelcomeScreen(username) {
     overlay.style.display = "flex";
     overlay.style.justifyContent = "center";
     overlay.style.alignItems = "center";
-    overlay.style.fontSize = "44px";
-    overlay.style.fontWeight = "bold";
     overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
-    overlay.style.textShadow = "2px 2px 4px black";
+    overlay.style.zIndex = "99999";
     overlay.style.opacity = "0";
     overlay.style.transition = "opacity 1s ease";
-    overlay.style.zIndex = "99999";
 
     document.body.appendChild(overlay);
 
@@ -95,14 +102,27 @@ function showWelcomeScreen(username) {
 
         setTimeout(() => {
             overlay.remove();
+
             desktop.classList.remove("hidden");
+            desktop.style.opacity = "0";
+            desktop.style.transition = "opacity 1s ease";
+
+            if (startupSound) {
+                startupSound.play().catch(() => {});
+            }
+
             startClock();
+
+            setTimeout(() => {
+                desktop.style.opacity = "1";
+            }, 50);
+
         }, 1000);
 
     }, 2600);
 }
 
-let clockInterval = null;
+/* Clock */
 
 function startClock() {
     updateClock();
@@ -122,6 +142,8 @@ function updateClock() {
     });
 }
 
+/* Desktop Icon */
+
 birthdayIcon.addEventListener("dblclick", () => {
     if (clickSound) {
         clickSound.play().catch(() => {});
@@ -129,6 +151,8 @@ birthdayIcon.addEventListener("dblclick", () => {
 
     openBirthdayWindow();
 });
+
+/* Birthday Window */
 
 function openBirthdayWindow() {
     createWindow({
@@ -138,8 +162,11 @@ function openBirthdayWindow() {
         height: 320,
         content: `
             <h2>Welcome!</h2>
+
             <p>You have received one new invitation.</p>
+
             <br>
+
             <div style="text-align:right;">
                 <button id="continueButton">Continue</button>
             </div>
@@ -148,6 +175,7 @@ function openBirthdayWindow() {
 
     setTimeout(() => {
         const btn = document.getElementById("continueButton");
+
         if (!btn) return;
 
         btn.onclick = () => {
