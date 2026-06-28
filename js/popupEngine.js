@@ -117,10 +117,130 @@ function createSetupWizard() {
 
         btn.onclick = () => {
 
-            alert("Birthday invitation coming next 👀");
+            closeAllWindows();
+
+            createInstaller();
 
         };
 
     }, 50);
+
+}
+
+function createInstaller() {
+
+    const win = createWindow({
+
+        id: "installer",
+
+        title: "Birthday Setup",
+
+        width: 520,
+
+        height: 260,
+
+        content: `
+
+            <h2>Installing Birthday Components...</h2>
+
+            <br>
+
+            <div style="width:100%;height:24px;border:1px solid #777;background:white;">
+
+                <div id="installBar"
+                    style="width:0%;height:100%;background:#2b87ff;transition:.1s;">
+                </div>
+
+            </div>
+
+            <br>
+
+            <p id="installText">
+
+                Preparing files...
+
+            </p>
+
+        `
+
+    });
+
+    const bar = document.getElementById("installBar");
+    const text = document.getElementById("installText");
+
+    let percent = 0;
+
+    const interval = setInterval(() => {
+
+        percent += 2;
+
+        bar.style.width = percent + "%";
+
+        if (percent > 20) text.innerText = "Copying memories...";
+        if (percent > 45) text.innerText = "Wrapping presents...";
+        if (percent > 70) text.innerText = "Adding cake...";
+        if (percent > 90) text.innerText = "Almost ready...";
+
+        if (percent >= 100) {
+
+            clearInterval(interval);
+
+            setTimeout(() => {
+
+                win.remove();
+
+                createBirthdayWindow();
+
+            }, 700);
+
+        }
+
+    }, 80);
+
+}
+
+function createBirthdayWindow() {
+
+    createWindow({
+
+        id: "birthdayFinal",
+
+        title: "Happy Birthday!",
+
+        width: 620,
+
+        height: 420,
+
+        content: `
+
+            <div style="text-align:center;">
+
+                <h1>🎉 HAPPY BIRTHDAY! 🎉</h1>
+
+                <br>
+
+                <h2>You survived the virus.</h2>
+
+                <br><br>
+
+                <p>
+
+                    This whole computer was just trying to surprise you.
+
+                </p>
+
+                <br><br>
+
+                <button>
+
+                    Celebrate!
+
+                </button>
+
+            </div>
+
+        `
+
+    });
 
 }
