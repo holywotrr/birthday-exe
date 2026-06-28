@@ -6,6 +6,8 @@
 // Screens
 const bootScreen = document.getElementById("bootScreen");
 const loginScreen = document.getElementById("loginScreen");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const welcomeText = document.getElementById("welcomeText");
 const desktop = document.getElementById("desktop");
 
 // Login
@@ -22,30 +24,16 @@ const clock = document.getElementById("clock");
 const startupSound = document.getElementById("startupSound");
 const clickSound = document.getElementById("clickSound");
 
-// Welcome
-const welcomeScreen = document.getElementById("welcomeScreen");
-const welcomeText = document.getElementById("welcomeText");
+/* Boot */
 
-/* ==========================================
-   Boot
-========================================== */
-
-window.addEventListener("load", boot);
-
-function boot() {
-
+window.addEventListener("load", () => {
     setTimeout(() => {
-
         bootScreen.classList.add("hidden");
         loginScreen.classList.remove("hidden");
-
     }, 3500);
+});
 
-}
-
-/* ==========================================
-   Login
-========================================== */
+/* Login */
 
 loginButton.addEventListener("click", login);
 
@@ -63,7 +51,7 @@ function login() {
 
     const correctPassword = "YURI";
 
-    if (username.length === 0) {
+    if (!username) {
         alert("Please enter your name.");
         return;
     }
@@ -77,30 +65,23 @@ function login() {
 
     localStorage.setItem("guestName", username);
 
-    startupSound?.play().catch(() => {});
-
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
-   loginScreen.classList.add("hidden");
+    loginScreen.classList.add("hidden");
 
-   welcomeText.textContent = `Welcome, ${username}`;
+    welcomeText.textContent = `Welcome, ${username}`;
+    welcomeScreen.classList.remove("hidden");
 
-   welcomeScreen.classList.remove("hidden");
+    startupSound?.play().catch(() => {});
 
-      setTimeout(() => {
-
-       welcomeScreen.classList.add("hidden");
-
-       desktop.classList.remove("hidden");
-
-       startClock();
-
-   }, 2200);
+    setTimeout(() => {
+        welcomeScreen.classList.add("hidden");
+        desktop.classList.remove("hidden");
+        startClock();
+    }, 2200);
 }
 
-/* ==========================================
-   Clock
-========================================== */
+/* Clock */
 
 function startClock() {
     updateClock();
@@ -108,105 +89,58 @@ function startClock() {
 }
 
 function updateClock() {
-    const clockElement = document.getElementById("clock");
-
-    if (!clockElement) {
-        console.log("Clock element not found");
-        return;
-    }
-
-    const now = new Date();
-
-    const time = now.toLocaleTimeString("en-US", {
+    clock.textContent = new Date().toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
         hour12: true
     });
-
-    clockElement.textContent = time;
-    console.log("Clock updated:", time);
 }
 
-/* ==========================================
-   Desktop Icon
-========================================== */
+/* Desktop Icon */
 
 birthdayIcon.addEventListener("dblclick", () => {
-
     clickSound?.play().catch(() => {});
-
     openBirthdayWindow();
-
 });
 
-/* ==========================================
-   Invitation Window
-========================================== */
+/* Invitation Window */
 
 function openBirthdayWindow() {
-
     createWindow({
-
         id: "birthday",
-
         title: "Birthday.exe",
-
         width: 480,
-
         height: 320,
-
         content: `
+            <h2>Welcome!</h2>
 
-        <h2>Welcome!</h2>
+            <p>You have received one new invitation.</p>
 
-        <p>
-        You have received one new invitation.
-        </p>
+            <br>
 
-        <br>
-
-        <div style="text-align:right;">
-
-            <button id="continueButton">
-                Continue
-            </button>
-
-        </div>
-
+            <div style="text-align:right;">
+                <button id="continueButton">Continue</button>
+            </div>
         `
-
     });
 
     setTimeout(() => {
-
         const btn = document.getElementById("continueButton");
-
         if (!btn) return;
 
         btn.onclick = () => {
-
             btn.disabled = true;
-
             btn.innerText = "Loading...";
 
             setTimeout(() => {
-
                 closeAllWindows();
 
                 if (typeof createVirusPopup === "function") {
-
                     createVirusPopup();
-
                 } else {
-
                     alert("popupEngine.js is missing.");
-
                 }
-
             }, 2500);
-
         };
-
     }, 50);
-
 }
