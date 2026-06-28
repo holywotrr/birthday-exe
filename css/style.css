@@ -302,26 +302,50 @@ body{
     background:#ECE9D8;
 }
 
-/* WELCOME SCREEN FIX */
+/* ===========================
+WELCOME SCREEN
+=========================== */
 
 #welcomeScreen{
+
     position:fixed;
+
     inset:0;
+
     background:#245EDB;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .8s ease;
+
     z-index:9999;
+
 }
 
-#welcomeScreen.hidden{
-    display:none !important;
+#welcomeScreen.show{
+
+    opacity:1;
+
 }
 
 #welcomeText{
+
     color:white;
+
     font-size:44px;
+
     font-weight:bold;
+
     font-family:Tahoma, Verdana, sans-serif;
-    text-shadow:2px 2px 4px black;
+
+    text-shadow:2px 2px 4px rgba(0,0,0,.5);
+
 }
