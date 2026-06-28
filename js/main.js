@@ -251,9 +251,9 @@ function openXXXFolder() {
 
                     <br><br>
 
-                    <h3>bro...</h3>
+                    <h3>gang...</h3>
 
-                    <p>caught yo ahh lackin</p>
+                    <p>Watchu looking at?</p>
 
                 </div>
             `
