@@ -176,12 +176,12 @@ function openMyDocuments() {
             <br>
 
             <div style="display:flex;gap:35px;text-align:center;">
-                <div onclick="openNormalFolder('School Stuff')" style="cursor:pointer;">
+                <div onclick="openSchoolFolder('School Stuff')" style="cursor:pointer;">
                     <div style="font-size:42px;">📁</div>
                     <p>School Stuff</p>
                 </div>
 
-                <div onclick="openNormalFolder('Personal')" style="cursor:pointer;">
+                <div onclick="openPersonalFolder('Personal')" style="cursor:pointer;">
                     <div style="font-size:42px;">📁</div>
                     <p>Personal</p>
                 </div>
@@ -194,14 +194,24 @@ function openMyDocuments() {
         `
     });
 }
-
-function openNormalFolder(name) {
+function openSchoolFolder() {
     createWindow({
         title: name,
         width: 380,
         height: 220,
         content: `
-            <p>This folder is empty.</p>
+            <p>School's next month gangalang <3</p>
+        `
+    });
+}
+
+function openPersonalFolder() {
+    createWindow({
+        title: name,
+        width: 380,
+        height: 220,
+        content: `
+            <p>Nunya business... I like girls</p>
         `
     });
 }
