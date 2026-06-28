@@ -194,7 +194,8 @@ function openMyDocuments() {
         `
     });
 }
-function openSchoolFolder() {
+
+function openSchoolFolder('School Stuff') {
     createWindow({
         title: name,
         width: 380,
@@ -205,7 +206,7 @@ function openSchoolFolder() {
     });
 }
 
-function openPersonalFolder() {
+function openPersonalFolder('Personal') {
     createWindow({
         title: name,
         width: 380,
