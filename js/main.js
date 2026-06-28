@@ -67,18 +67,33 @@ function login() {
 
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
-    loginScreen.classList.add("hidden");
+   loginScreen.classList.add("hidden");
+desktop.classList.remove("hidden");
 
-    welcomeText.textContent = `Welcome, ${username}`;
-    welcomeScreen.classList.remove("hidden");
+startupSound?.play().catch(() => {});
+startClock();
 
-    startupSound?.play().catch(() => {});
+const overlay = document.createElement("div");
+overlay.innerText = `Welcome, ${username}`;
+overlay.style.position = "fixed";
+overlay.style.inset = "0";
+overlay.style.background = "#245EDB";
+overlay.style.color = "white";
+overlay.style.display = "flex";
+overlay.style.justifyContent = "center";
+overlay.style.alignItems = "center";
+overlay.style.fontSize = "44px";
+overlay.style.fontWeight = "bold";
+overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
+overlay.style.zIndex = "99999";
+overlay.style.textShadow = "2px 2px 4px black";
 
-    setTimeout(() => {
-        welcomeScreen.classList.add("hidden");
-        desktop.classList.remove("hidden");
-        startClock();
-    }, 2200);
+document.body.appendChild(overlay);
+
+setTimeout(() => {
+    overlay.remove();
+}, 2200);
+   
 }
 
 /* Clock */
