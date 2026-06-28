@@ -155,6 +155,72 @@ birthdayIcon.addEventListener("dblclick", () => {
     openBirthdayWindow();
 });
 
+const documentIcons = document.querySelectorAll(".icon");
+
+documentIcons.forEach(icon => {
+    const label = icon.querySelector("p");
+
+    if (label && label.textContent.trim() === "My Documents") {
+        icon.addEventListener("dblclick", openMyDocuments);
+    }
+});
+
+function openMyDocuments() {
+    createWindow({
+        title: "My Documents",
+        width: 560,
+        height: 360,
+        content: `
+            <h3>My Documents</h3>
+
+            <br>
+
+            <div style="display:flex;gap:35px;text-align:center;">
+                <div onclick="openNormalFolder('School Stuff')" style="cursor:pointer;">
+                    <div style="font-size:42px;">📁</div>
+                    <p>School Stuff</p>
+                </div>
+
+                <div onclick="openNormalFolder('Personal')" style="cursor:pointer;">
+                    <div style="font-size:42px;">📁</div>
+                    <p>Personal</p>
+                </div>
+
+                <div onclick="openXXXFolder()" style="cursor:pointer;">
+                    <div style="font-size:42px;">📁</div>
+                    <p>xxx</p>
+                </div>
+            </div>
+        `
+    });
+}
+
+function openNormalFolder(name) {
+    createWindow({
+        title: name,
+        width: 380,
+        height: 220,
+        content: `
+            <p>This folder is empty.</p>
+        `
+    });
+}
+
+function openXXXFolder() {
+    createWindow({
+        title: "xxx",
+        width: 430,
+        height: 360,
+        content: `
+            <div style="text-align:center;">
+                <h2>caught you lackin 🤨</h2>
+                <br>
+                <p>side-eye image goes here later</p>
+            </div>
+        `
+    });
+}
+
 /* Birthday Window */
 
 function openBirthdayWindow() {
