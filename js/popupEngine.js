@@ -220,7 +220,7 @@ function createBirthdayInvitation() {
     });
 
     document.getElementById("acceptBtn").onclick = () => {
-        launchConfetti();
+        spawnYippiePopups();
        
        const partyAudio = document.getElementById("partySound");
        partyAudio?.play().catch(() => {});
@@ -234,28 +234,29 @@ function createBirthdayInvitation() {
     };
 }
 
-function launchConfetti() {
-    for (let i = 0; i < 80; i++) {
-        const piece = document.createElement("div");
-
-        piece.textContent = ["🎉", "🎂", "💌", "✨", "🎈"][Math.floor(Math.random() * 5)];
-        piece.style.position = "fixed";
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.top = "-40px";
-        piece.style.fontSize = Math.random() * 18 + 18 + "px";
-        piece.style.zIndex = "9999";
-        piece.style.pointerEvents = "none";
-        piece.style.transition = "transform 3s linear, opacity 3s linear";
-
-        document.body.appendChild(piece);
-
+function spawnYippiePopups() {
+    for (let i = 0; i < 8; i++) {
         setTimeout(() => {
-            piece.style.transform = `translateY(110vh) rotate(${Math.random() * 720}deg)`;
-            piece.style.opacity = "0";
-        }, 50);
-
-        setTimeout(() => {
-            piece.remove();
-        }, 3200);
+            createWindow({
+                title: "YIPPIE!!!",
+                width: 300,
+                height: 260,
+                x: Math.random() * (window.innerWidth - 330),
+                y: Math.random() * (window.innerHeight - 330),
+                content: `
+                    <div style="text-align:center;">
+                        <img
+                            src="assets/images/yippie.gif"
+                            style="width:220px;height:auto;"
+                            alt="Yippie">
+                        <br><br>
+                        <b>RSVP installed successfully!</b>
+                    </div>
+                `
+            });
+        }, i * 250);
     }
+
+    const partyAudio = document.getElementById("partySound");
+    partyAudio?.play().catch(() => {});
 }
