@@ -5,7 +5,9 @@
 
 let highestZ = 100;
 
-/* Create a Window */
+/* =========================
+   Create Window
+========================= */
 
 function createWindow({
 
@@ -13,138 +15,138 @@ function createWindow({
     title = "Window",
     width = 420,
     height = 280,
+    x = null,
+    y = null,
     content = ""
 
-}){
+}) {
 
     const layer = document.getElementById("windowLayer");
+
+    if (!layer) {
+        console.error("windowLayer not found.");
+        return;
+    }
 
     const win = document.createElement("div");
 
     win.className = "xpWindow";
 
-    if(id) win.id = id;
+    if (id) {
+        win.id = id;
+    }
 
     win.style.width = width + "px";
     win.style.height = height + "px";
 
-    win.style.left = (window.innerWidth/2-width/2)+"px";
-    win.style.top = (window.innerHeight/2-height/2-40)+"px";
+    if (x === null) {
+        x = (window.innerWidth - width) / 2;
+    }
+
+    if (y === null) {
+        y = (window.innerHeight - height) / 2 - 30;
+    }
+
+    win.style.left = x + "px";
+    win.style.top = y + "px";
 
     win.style.zIndex = highestZ++;
 
     win.innerHTML = `
+        <div class="windowTitle">
 
-<div class="windowTitle">
+            <div class="windowText">
+                ${title}
+            </div>
 
-<div class="windowText">
+            <div class="windowButtons">
 
-${title}
+                <button class="windowClose">
+                    ✕
+                </button>
 
-</div>
+            </div>
 
-<div class="windowButtons">
+        </div>
 
-<button class="windowClose">
-
-✕
-
-</button>
-
-</div>
-
-</div>
-
-<div class="windowBody">
-
-${content}
-
-</div>
-
-`;
+        <div class="windowBody">
+            ${content}
+        </div>
+    `;
 
     layer.appendChild(win);
 
     makeDraggable(win);
 
-    win.addEventListener("mousedown",()=>{
-
+    win.addEventListener("mousedown", () => {
         bringToFront(win);
-
     });
 
-    win
-    .querySelector(".windowClose")
-    .onclick=()=>{
-
+    win.querySelector(".windowClose").onclick = () => {
         win.remove();
-
     };
 
     return win;
 
 }
 
-/* ========================= */
+/* =========================
+   Bring To Front
+========================= */
 
-function bringToFront(win){
+function bringToFront(win) {
 
     win.style.zIndex = highestZ++;
 
 }
 
-/* ========================= */
+/* =========================
+   Draggable Windows
+========================= */
 
-function makeDraggable(win){
+function makeDraggable(win) {
 
     const title = win.querySelector(".windowTitle");
 
+    let dragging = false;
     let offsetX = 0;
     let offsetY = 0;
 
-    let dragging = false;
-
-    title.addEventListener("mousedown",(e)=>{
+    title.addEventListener("mousedown", (e) => {
 
         dragging = true;
 
-        offsetX =
-        e.clientX-win.offsetLeft;
-
-        offsetY =
-        e.clientY-win.offsetTop;
+        offsetX = e.clientX - win.offsetLeft;
+        offsetY = e.clientY - win.offsetTop;
 
         bringToFront(win);
 
     });
 
-    document.addEventListener("mousemove",(e)=>{
+    document.addEventListener("mousemove", (e) => {
 
-        if(!dragging) return;
+        if (!dragging) return;
 
-        win.style.left =
-        e.clientX-offsetX+"px";
-
-        win.style.top =
-        e.clientY-offsetY+"px";
+        win.style.left = (e.clientX - offsetX) + "px";
+        win.style.top = (e.clientY - offsetY) + "px";
 
     });
 
-    document.addEventListener("mouseup",()=>{
+    document.addEventListener("mouseup", () => {
 
-        dragging=false;
+        dragging = false;
 
     });
 
 }
 
-/* ========================= */
+/* =========================
+   Close All Windows
+========================= */
 
-function closeAllWindows(){
+function closeAllWindows() {
 
-    document
-    .querySelectorAll(".xpWindow")
-    .forEach(win=>{
+    document.querySelectorAll(".xpWindow").forEach(win => {
 
         win.remove();
 
