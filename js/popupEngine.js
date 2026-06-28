@@ -11,9 +11,8 @@ function createVirusPopup() {
         "Memory access violation.",
         "Birthday.exe cannot be deleted.",
         "Cake.dll has been installed.",
-        "Friendship.exe is running in the background."
+        "Friendship.exe is running in the background.",
         "You're gay."
-      
     ];
 
     let amount = 0;
@@ -37,9 +36,7 @@ function createVirusPopup() {
                         ${messages[Math.floor(Math.random() * messages.length)]}
                     </div>
                 </div>
-
                 <br>
-
                 <div style="text-align:right;">
                     <button onclick="this.closest('.xpWindow').remove()">OK</button>
                 </div>
@@ -50,7 +47,6 @@ function createVirusPopup() {
 
         if (amount >= 50) {
             clearInterval(interval);
-
             setTimeout(() => {
                 closeAllWindows();
                 createSetupWizard();
@@ -67,26 +63,13 @@ function createSetupWizard() {
         height: 350,
         content: `
             <h2>Birthday.exe Setup Wizard</h2>
-
             <br>
-
             <p>Virus successfully removed.</p>
-
             <br>
-
-            <p>
-                One hidden program has been found:
-                <b>Birthday Invitation.exe</b>
-            </p>
-
+            <p>One hidden program has been found: <b>Birthday Invitation.exe</b></p>
             <br>
-
-            <p>
-                This wizard will install your invitation.
-            </p>
-
+            <p>This wizard will install your invitation.</p>
             <br><br>
-
             <div style="text-align:right;">
                 <button id="wizardNext">Install</button>
             </div>
@@ -107,15 +90,11 @@ function createInstaller() {
         height: 280,
         content: `
             <h2>Installing Birthday Invitation.exe...</h2>
-
             <br>
-
             <div style="width:100%;height:24px;border:1px solid #777;background:white;">
                 <div id="installBar" style="width:0%;height:100%;background:#2b87ff;transition:.1s;"></div>
             </div>
-
             <br>
-
             <p id="installText">Preparing invitation files...</p>
         `
     });
@@ -136,7 +115,6 @@ function createInstaller() {
 
         if (percent >= 100) {
             clearInterval(interval);
-
             setTimeout(() => {
                 win.remove();
                 createInvitationInstalledWindow();
@@ -153,21 +131,11 @@ function createInvitationInstalledWindow() {
         height: 300,
         content: `
             <h2>Installation Complete</h2>
-
             <br>
-
-            <p>
-                <b>Birthday Invitation.exe</b> has been installed successfully.
-            </p>
-
+            <p><b>Birthday Invitation.exe</b> has been installed successfully.</p>
             <br>
-
-            <p>
-                Open the program to view your invitation.
-            </p>
-
+            <p>Open the program to view your invitation.</p>
             <br><br>
-
             <div style="text-align:right;">
                 <button id="openInviteBtn">Open Birthday Invitation.exe</button>
             </div>
@@ -191,30 +159,18 @@ function createBirthdayInvitation() {
         content: `
             <div style="text-align:center;">
                 <h1>💌 YOU'RE INVITED!</h1>
-
                 <br>
-
-                <p>
-                    Hello <b>${guestName}</b>!
-                </p>
-
+                <p>Hello <b>${guestName}</b>!</p>
                 <br>
-
-                <p>
-                    You survived Birthday.exe, so now you're officially invited to my birthday!!
-                </p>
-
+                <p>You survived Birthday.exe, so now you're officially invited to my birthday!!</p>
                 <br>
-
                 <div style="text-align:left;display:inline-block;line-height:1.9;">
                     <p><b>📅 Date:</b> July 21, 2026</p>
                     <p><b>🕕 Time:</b> 6:00 PM - 10:00 PM / until closing</p>
                     <p><b>🎮 Theme:</b> ANYTHING!! (be yourself and bring yourself)</p>
                     <p><b>📍 Location:</b> TBA</p>
                 </div>
-
                 <br><br>
-
                 <button id="acceptBtn">I'll Be There!</button>
                 <button id="maybeBtn">Maybe</button>
             </div>
@@ -223,12 +179,7 @@ function createBirthdayInvitation() {
 
     document.getElementById("acceptBtn").onclick = () => {
         spawnYippiePopups();
-       
-       const partyAudio = document.getElementById("partySound");
-       partyAudio?.play().catch(() => {});
-
-       alert("RSVP saved: I'll be there! 🎉");
-       
+        document.getElementById("partySound")?.play().catch(() => {});
     };
 
     document.getElementById("maybeBtn").onclick = () => {
@@ -251,15 +202,11 @@ function spawnYippiePopups() {
                             src="assets/images/yippie.gif"
                             style="width:220px;height:auto;"
                             alt="Yippie">
-
                         <br><br>
-
                         <b>RSVP installed successfully!</b>
                     </div>
                 `
             });
         }, i * 180);
     }
-
-    document.getElementById("partySound")?.play().catch(() => {});
 }
