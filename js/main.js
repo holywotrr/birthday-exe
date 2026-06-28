@@ -128,6 +128,10 @@ document.querySelectorAll(".icon").forEach(icon => {
     if (text === "Recycle Bin") {
         icon.addEventListener("dblclick", openRecycleBin);
     }
+   
+   if (text === "My Computer") {
+       icon.addEventListener("dblclick", openMyComputer);
+    }
 });
 
 function openMyDocuments() {
@@ -291,4 +295,65 @@ function openBirthdayWindow() {
             }, 2500);
         };
     }, 50);
+}
+
+function openMyComputer() {
+    createWindow({
+        title: "My Computer",
+        width: 560,
+        height: 360,
+        content: `
+            <h3>My Computer</h3>
+            <br>
+
+            <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
+                <div onclick="openDrive('Local Disk (C:)')" style="cursor:pointer;">
+                    <div style="font-size:42px;">💽</div>
+                    <p>Local Disk (C:)</p>
+                </div>
+
+                <div onclick="openDrive('DVD Drive (D:)')" style="cursor:pointer;">
+                    <div style="font-size:42px;">📀</div>
+                    <p>DVD Drive (D:)</p>
+                </div>
+
+                <div onclick="openBirthdayDrive()" style="cursor:pointer;">
+                    <div style="font-size:42px;">🎂</div>
+                    <p>Birthday Drive (B:)</p>
+                </div>
+            </div>
+        `
+    });
+}
+
+function openDrive(name) {
+    createWindow({
+        title: name,
+        width: 400,
+        height: 220,
+        content: `
+            <p>This drive is empty.</p>
+            <br>
+            <p><b>Status:</b> suspiciously clean.</p>
+        `
+    });
+}
+
+function openBirthdayDrive() {
+    createWindow({
+        title: "Birthday Drive (B:)",
+        width: 460,
+        height: 260,
+        content: `
+            <h3>Birthday partition found 🎂</h3>
+            <br>
+            <p>This drive contains important birthday system files.</p>
+            <br>
+            <p><b>Files:</b></p>
+            <br>
+            <p>birthday_invitation.exe</p>
+            <p>cake.dll</p>
+            <p>party_config.sys</p>
+        `
+    });
 }
