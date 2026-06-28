@@ -54,11 +54,20 @@ passwordInput.addEventListener("keydown", e => {
 });
 
 function login() {
-
     const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    const correctPassword = "YURI";
 
     if (username.length === 0) {
         alert("Please enter your name.");
+        return;
+    }
+
+    if (password !== correctPassword) {
+        alert("Incorrect password.");
+        passwordInput.value = "";
+        passwordInput.focus();
         return;
     }
 
@@ -72,7 +81,6 @@ function login() {
     desktop.classList.remove("hidden");
 
     startClock();
-
 }
 
 /* ==========================================
