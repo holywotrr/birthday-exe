@@ -11,7 +11,7 @@ function createVirusPopup() {
         "Memory access violation.",
         "Birthday.exe cannot be deleted.",
         "Cake.dll has been installed.",
-        "Friendship.exe is running in the background.",
+        "Faggot.exe is running in the background.",
         "You're gay."
     ];
 
