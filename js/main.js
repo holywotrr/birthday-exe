@@ -6,8 +6,6 @@
 // Screens
 const bootScreen = document.getElementById("bootScreen");
 const loginScreen = document.getElementById("loginScreen");
-const welcomeScreen = document.getElementById("welcomeScreen");
-const welcomeText = document.getElementById("welcomeText");
 const desktop = document.getElementById("desktop");
 
 // Login
@@ -64,69 +62,80 @@ function login() {
     }
 
     localStorage.setItem("guestName", username);
+    birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
-   loginScreen.classList.add("hidden");
+    loginScreen.classList.add("hidden");
 
-startupSound?.play().catch(() => {});
+    startupSound?.play().catch(() => {});
 
-const overlay = document.createElement("div");
+    showWelcomeScreen(username);
+}
 
-overlay.innerHTML = `
-    <div style="text-align:center;">
-        <div>Welcome, ${username}</div>
+/* Welcome Screen */
 
-        <div style="
-            margin-top:28px;
-            font-size:22px;
-            letter-spacing:6px;
-            animation:loadingDots 1s infinite;
-        ">
-            ● ● ●
+function showWelcomeScreen(username) {
+    const overlay = document.createElement("div");
+
+    overlay.innerHTML = `
+        <div style="text-align:center;">
+            <div>Welcome, ${username}</div>
+
+            <div style="
+                margin-top:28px;
+                font-size:22px;
+                letter-spacing:6px;
+                animation:loadingDots 1s infinite;
+            ">
+                ● ● ●
+            </div>
         </div>
-    </div>
-`;
+    `;
 
-overlay.style.position = "fixed";
-overlay.style.inset = "0";
-overlay.style.background = "#245EDB";
-overlay.style.color = "white";
-overlay.style.display = "flex";
-overlay.style.justifyContent = "center";
-overlay.style.alignItems = "center";
-overlay.style.fontSize = "44px";
-overlay.style.fontWeight = "bold";
-overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
-overlay.style.textShadow = "2px 2px 4px black";
-overlay.style.opacity = "0";
-overlay.style.transition = "opacity .8s ease";
-overlay.style.zIndex = "99999";
-
-document.body.appendChild(overlay);
-
-requestAnimationFrame(() => {
-    overlay.style.opacity = "1";
-});
-
-setTimeout(() => {
+    overlay.style.position = "fixed";
+    overlay.style.inset = "0";
+    overlay.style.background = "#245EDB";
+    overlay.style.color = "white";
+    overlay.style.display = "flex";
+    overlay.style.justifyContent = "center";
+    overlay.style.alignItems = "center";
+    overlay.style.fontSize = "44px";
+    overlay.style.fontWeight = "bold";
+    overlay.style.fontFamily = "Tahoma, Verdana, sans-serif";
+    overlay.style.textShadow = "2px 2px 4px black";
     overlay.style.opacity = "0";
+    overlay.style.transition = "opacity 1s ease";
+    overlay.style.zIndex = "99999";
+
+    document.body.appendChild(overlay);
 
     setTimeout(() => {
-        overlay.remove();
+        overlay.style.opacity = "1";
+    }, 50);
 
-        desktop.classList.remove("hidden");
-        birthdayLabel.textContent = `${username}'s Invitation.exe`;
-        startClock();
-    }, 800);
+    setTimeout(() => {
+        overlay.style.opacity = "0";
 
-}, 2200);
-   
+        setTimeout(() => {
+            overlay.remove();
+            desktop.classList.remove("hidden");
+            startClock();
+        }, 1000);
+
+    }, 2600);
 }
 
 /* Clock */
 
+let clockInterval = null;
+
 function startClock() {
     updateClock();
-    setInterval(updateClock, 1000);
+
+    if (clockInterval) {
+        clearInterval(clockInterval);
+    }
+
+    clockInterval = setInterval(updateClock, 1000);
 }
 
 function updateClock() {
