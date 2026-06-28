@@ -328,3 +328,9 @@ WELCOME SCREEN
     50%{opacity:1;}
     100%{opacity:.25;}
 }
+
+.welcome-loader{
+    margin-top:28px;
+    width:48px;
+    height:48px;
+}
