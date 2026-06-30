@@ -243,9 +243,9 @@ function openRecycleBin() {
 
 function openTrashFile(type) {
     const jokes = {
-        men: "File deleted for emotional safety.",
+        men: "File deleted cuz they ugly.",
         trump: "File deleted by public demand.",
-        gojo: "File deleted... but somehow still came back."
+        gojo: "File deleted for being overrated."
     };
 
     createWindow({
