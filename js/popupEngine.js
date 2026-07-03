@@ -168,7 +168,7 @@ function createBirthdayInvitation() {
                     <p><b>📅 Date:</b> July 21, 2026</p>
                     <p><b>🕕 Time:</b> 6:00 PM - 10:00 PM / until closing</p>
                     <p><b>🎮 Theme:</b> ANYTHING!! (be yourself and bring yourself)</p>
-                    <p><b>📍 Location:</b> TBA</p>
+                    <p><b>📍 Location:</b> Balai Siesta Caffe, Mandaue City (2nd Floor, City Timesquare, Mandaue City)</p>
                 </div>
                 <br><br>
                 <button id="acceptBtn">I'll Be There!</button>
@@ -194,7 +194,7 @@ function createBirthdayInvitation() {
         closeAllWindows();
 
         createWindow({
-            title: "RSVP Successful!",
+            title: "YIPPIE Successful.",
             width: 420,
             height: 220,
             content: `
