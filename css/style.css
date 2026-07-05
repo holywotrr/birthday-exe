@@ -260,12 +260,8 @@ body{
 =========================== */
 
 .xpWindow{
-    position:absolute;
-    background:#ECE9D8;
-    border:2px solid #0A246A;
-    box-shadow:8px 8px 18px rgba(0,0,0,.45);
-    overflow:hidden;
-    pointer-events:auto;
+    max-width:92vw !important;
+    max-height:75vh !important;
 }
 
 .windowTitle{
