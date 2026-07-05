@@ -20,11 +20,12 @@ function createVirusPopup() {
     const interval = setInterval(() => {
         amount++;
 
-        createWindow({
-            id: "virus" + amount,
-            title: "Windows Error",
-            width: 330,
-            height: 175,
+       createWindow({
+          id: "virus" + amount,
+          title: "Windows Error",
+          width: 330,
+          height: 175,
+          random: true,
             x: Math.random() * (window.innerWidth - 360),
             y: Math.random() * (window.innerHeight - 240),
             content: `
@@ -258,6 +259,7 @@ function spawnYippiePopups() {
                 title: "YIPPIE!!!",
                 width: 300,
                 height: 270,
+                random: true,
                 x: Math.random() * (window.innerWidth - 330),
                 y: Math.random() * (window.innerHeight - 330),
                 content: `
