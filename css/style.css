@@ -377,3 +377,15 @@ WELCOME SCREEN
         min-width:70px;
     }
 }
+
+@media (max-width:700px){
+    .xpWindow{
+        max-width:90vw !important;
+    }
+
+    .windowBody button{
+        margin-top:10px;
+        min-height:34px;
+        padding:6px 12px;
+    }
+}
