@@ -264,15 +264,18 @@ function openBirthdayWindow() {
     createWindow({
         id: "birthday",
         title: "Birthday.exe",
-        width: 480,
-        height: 320,
+        width: 380,
+        height: 210,
         content: `
             <h2>Welcome!</h2>
+
             <p>You have received one new invitation.</p>
+
             <br>
-            <div style="text-align:right;">
-                <button id="continueButton">Continue</button>
-            </div>
+
+            <button id="continueButton">
+                Continue
+            </button>
         `
     });
 
