@@ -46,9 +46,9 @@ function createWindow({
     win.style.width = width + "px";
     win.style.height = height + "px";
 
-    if (isMobile) {
-       x = (window.innerWidth - width) / 2;
-       y = 60;
+    if (isMobile && x === null && y === null) {
+        x = (window.innerWidth - width) / 2;
+        y = 60;
     } else {
        if (x === null) {
            x = (window.innerWidth - width) / 2;
