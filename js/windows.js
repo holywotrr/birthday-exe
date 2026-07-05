@@ -17,6 +17,7 @@ function createWindow({
     height = 280,
     x = null,
     y = null,
+    random = false,
     content = ""
 
 }) {
@@ -38,26 +39,47 @@ function createWindow({
 
     const isMobile = window.innerWidth <= 700;
 
-   if (isMobile) {
-       width = Math.min(width, window.innerWidth * 0.92);
-       height = Math.min(height, window.innerHeight * 0.75);
+    if (isMobile) {
+        width = Math.min(width, window.innerWidth * 0.92);
+        height = Math.min(height, window.innerHeight * 0.75);
     }
 
     win.style.width = width + "px";
     win.style.height = height + "px";
 
-    if (isMobile && x === null && y === null) {
-        x = (window.innerWidth - width) / 2;
-        y = 60;
-    } else {
-       if (x === null) {
-           x = (window.innerWidth - width) / 2;
-    }
+    if (isMobile) {
 
-    if (y === null) {
-        y = (window.innerHeight - height) / 2 - 30;
+        if (random) {
+
+            // Random popups on phones
+            if (x === null) {
+                x = Math.random() * (window.innerWidth - width);
+            }
+
+            if (y === null) {
+                y = Math.random() * (window.innerHeight - height - 40);
+            }
+
+        } else {
+
+            // Normal windows stay centered
+            x = (window.innerWidth - width) / 2;
+            y = (window.innerHeight - height) / 2;
+
+        }
+
+    } else {
+
+        // Desktop behavior
+        if (x === null) {
+            x = (window.innerWidth - width) / 2;
+        }
+
+        if (y === null) {
+            y = (window.innerHeight - height) / 2 - 30;
+        }
+
     }
-}
 
     win.style.left = x + "px";
     win.style.top = y + "px";
@@ -75,6 +97,7 @@ function createWindow({
 
                 <button class="windowClose">
                     ✕
+
                 </button>
 
             </div>
@@ -99,7 +122,6 @@ function createWindow({
     };
 
     return win;
-
 }
 
 /* =========================
@@ -107,9 +129,7 @@ function createWindow({
 ========================= */
 
 function bringToFront(win) {
-
     win.style.zIndex = highestZ++;
-
 }
 
 /* =========================
@@ -117,6 +137,9 @@ function bringToFront(win) {
 ========================= */
 
 function makeDraggable(win) {
+
+    // Disable dragging on mobile
+    if (window.innerWidth <= 700) return;
 
     const title = win.querySelector(".windowTitle");
 
