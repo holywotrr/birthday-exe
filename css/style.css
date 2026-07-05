@@ -334,3 +334,50 @@ WELCOME SCREEN
     width:48px;
     height:48px;
 }
+
+@media (max-width:700px){
+
+    #desktopIcons{
+        top:12px;
+        left:10px;
+        gap:14px;
+    }
+
+    .icon{
+        width:76px;
+    }
+
+    .icon img{
+        width:42px;
+        height:42px;
+    }
+
+    .icon p{
+        font-size:11px;
+    }
+
+    .xpWindow{
+        max-width:92vw !important;
+        max-height:75vh !important;
+    }
+
+    .windowBody{
+        font-size:13px;
+        overflow:auto;
+    }
+
+    #taskbar{
+        height:38px;
+        padding:0 6px;
+    }
+
+    #startButton{
+        width:72px;
+        font-size:12px;
+    }
+
+    #clock{
+        font-size:12px;
+        min-width:70px;
+    }
+}
