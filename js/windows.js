@@ -36,16 +36,28 @@ function createWindow({
         win.id = id;
     }
 
+    const isMobile = window.innerWidth <= 700;
+
+   if (isMobile) {
+       width = Math.min(width, window.innerWidth * 0.92);
+       height = Math.min(height, window.innerHeight * 0.75);
+    }
+
     win.style.width = width + "px";
     win.style.height = height + "px";
 
-    if (x === null) {
-        x = (window.innerWidth - width) / 2;
+    if (isMobile) {
+       x = (window.innerWidth - width) / 2;
+       y = 60;
+    } else {
+       if (x === null) {
+           x = (window.innerWidth - width) / 2;
     }
 
     if (y === null) {
         y = (window.innerHeight - height) / 2 - 30;
     }
+}
 
     win.style.left = x + "px";
     win.style.top = y + "px";
