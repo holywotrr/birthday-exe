@@ -22,6 +22,11 @@ body{
     display:none !important;
 }
 
+button{
+    font-family:Tahoma, Verdana, sans-serif;
+    cursor:pointer;
+}
+
 /* ===========================
    BOOT
 =========================== */
@@ -85,6 +90,7 @@ body{
 
 #loginWindow{
     width:380px;
+    max-width:90vw;
     background:#ECE9D8;
     border:3px solid #0A246A;
     border-radius:7px;
@@ -112,6 +118,10 @@ body{
     font-size:15px;
 }
 
+#loginWindow input::placeholder{
+    font-size:12px;
+}
+
 #loginButton{
     width:100%;
     padding:11px;
@@ -136,7 +146,6 @@ body{
     width:100vw;
     height:100vh;
     overflow:hidden;
-
     background:url("../assets/wallpapers/bliss.jpg") center center / cover no-repeat;
 }
 
@@ -144,11 +153,9 @@ body{
     position:absolute;
     top:18px;
     left:18px;
-
     display:flex;
     flex-direction:column;
     gap:20px;
-
     z-index:5;
 }
 
@@ -168,32 +175,6 @@ body{
     color:white;
     font-size:13px;
     text-shadow:1px 1px 3px black;
-}
-
-#windowLayer{
-    position:absolute;
-    inset:0;
-    z-index:10;
-    pointer-events:auto;
-}
-
-#taskbar{
-    position:absolute;
-    bottom:0;
-    left:0;
-
-    width:100%;
-    height:40px;
-
-    background:#245EDB;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 10px;
-
-    z-index:100;
 }
 
 /* ===========================
@@ -241,11 +222,10 @@ body{
     font-size:14px;
     min-width:90px;
     text-align:right;
-    z-index:999;
 }
 
 /* ===========================
-   WINDOW LAYER
+   WINDOWS
 =========================== */
 
 #windowLayer{
@@ -255,11 +235,12 @@ body{
     pointer-events:none;
 }
 
-/* ===========================
-   WINDOWS
-=========================== */
-
 .xpWindow{
+    position:absolute;
+    background:#ECE9D8;
+    border:2px solid #0A246A;
+    box-shadow:8px 8px 18px rgba(0,0,0,.45);
+    overflow:hidden;
     pointer-events:auto;
 }
 
@@ -273,6 +254,13 @@ body{
     cursor:move;
     color:white;
     font-weight:bold;
+}
+
+.windowText{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    padding-right:8px;
 }
 
 .windowButtons{
@@ -297,8 +285,12 @@ body{
     background:#ECE9D8;
 }
 
+.windowBody button{
+    padding:6px 12px;
+}
+
 /* ===========================
-WELCOME SCREEN
+   WELCOME SCREEN
 =========================== */
 
 .welcome-box{
@@ -311,27 +303,17 @@ WELCOME SCREEN
     font-weight:bold;
 }
 
-.welcome-dots{
-    margin-top:28px;
-    font-size:22px;
-    letter-spacing:6px;
-    animation:loadingDots 1s infinite;
-}
-
-@keyframes loadingDots{
-    0%{opacity:.25;}
-    50%{opacity:1;}
-    100%{opacity:.25;}
-}
-
 .welcome-loader{
     margin-top:28px;
     width:48px;
     height:48px;
 }
 
-@media (max-width:700px){
+/* ===========================
+   MOBILE
+=========================== */
 
+@media (max-width:700px){
     #desktopIcons{
         top:12px;
         left:10px;
@@ -353,12 +335,25 @@ WELCOME SCREEN
 
     .xpWindow{
         max-width:92vw !important;
-        max-height:75vh !important;
+        max-height:76vh !important;
+    }
+
+    .windowTitle{
+        cursor:default;
     }
 
     .windowBody{
         font-size:13px;
-        overflow:auto;
+        padding:14px;
+        overflow:auto !important;
+        padding-bottom:30px;
+    }
+
+    .windowBody button,
+    button{
+        min-height:36px;
+        padding:8px 12px;
+        touch-action:manipulation;
     }
 
     #taskbar{
@@ -374,17 +369,5 @@ WELCOME SCREEN
     #clock{
         font-size:12px;
         min-width:70px;
-    }
-}
-
-@media (max-width:700px){
-    .xpWindow{
-        max-width:90vw !important;
-    }
-
-    .windowBody button{
-        margin-top:10px;
-        min-height:34px;
-        padding:6px 12px;
     }
 }
