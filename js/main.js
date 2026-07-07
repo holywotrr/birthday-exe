@@ -49,6 +49,13 @@ function login() {
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
 
     loginScreen.classList.add("hidden");
+
+    try {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        }
+    } catch (e) {}
+   
     showWelcomeScreen(username);
 }
 
