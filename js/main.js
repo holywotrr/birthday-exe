@@ -47,9 +47,10 @@ function login() {
 
     localStorage.setItem("guestName", username);
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
-
+   
     loginScreen.classList.add("hidden");
-    showWelcomeScreen(username);
+   
+    showDisplayWizard(username);
 }
 
 function showWelcomeScreen(username) {
@@ -298,6 +299,71 @@ function openBirthdayWindow() {
             }, 2500);
         };
     }, 50);
+}
+
+async function showDisplayWizard(username){
+
+    createWindow({
+
+        id:"displayWizard",
+
+        title:"Display Settings",
+
+        width:500,
+
+        height:280,
+
+        content:`
+
+            <h2>Windows XP Display Wizard</h2>
+
+            <br>
+
+            <p>
+                Birthday.exe recommends enabling
+                <b>Full Screen Mode</b>
+                for the best experience.
+            </p>
+
+            <br>
+
+            <p>
+                Recommended Resolution:
+                <b>${screen.width} × ${screen.height}</b>
+            </p>
+
+            <br><br>
+
+            <div style="text-align:right;">
+
+                <button id="fullscreenBtn">
+                    Enable
+                </button>
+
+            </div>
+
+        `
+
+    });
+
+    document.getElementById("fullscreenBtn").onclick = async ()=>{
+
+        try{
+
+            if(document.documentElement.requestFullscreen){
+
+                await document.documentElement.requestFullscreen();
+
+            }
+
+        }catch(e){}
+
+        closeAllWindows();
+
+        showWelcomeScreen(username);
+
+    };
+
 }
 
 function openMyComputer() {
