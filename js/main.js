@@ -49,6 +49,9 @@ function login() {
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
    
     loginScreen.classList.add("hidden");
+
+    desktop.classList.remove("hidden");
+    desktop.style.opacity = "1";
    
     showDisplayWizard(username);
 }
