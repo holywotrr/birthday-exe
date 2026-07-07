@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday.exe</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Boot Screen -->
+    <!-- ========================= -->
+
+    <section id="bootScreen">
+
+        <div class="boot-center">
+
+            <h1 class="boot-title">
+                Yuri Windows XP
+            </h1>
+
+            <div class="loading-box">
+                <div id="loadingBar"></div>
+            </div>
+
+            <p class="boot-text">
+                Starting The Yuri...
+            </p>
+
+        </div>
+
+    </section>
+
+   <!-- ========================= -->
+<!-- Login -->
+<!-- ========================= -->
+
+<section id="loginScreen" class="hidden">
+
+    <div id="loginWindow">
+
+        <h2>Welcome</h2>
+
+        <p>
+            Enter your username.<br>
+            (Make sure it's actually your name.)
+        </p>
+
+        <input
+            id="username"
+            type="text"
+            placeholder="your real name ho">
+
+        <input
+            id="password"
+            type="password"
+            placeholder="What do i love the most in the whole world?">
+
+        <button id="loginButton">
+            Log In
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Welcome Screen -->
+<!-- ========================= -->
+
+<section id="welcomeScreen" class="hidden">
+    <div id="welcomeText">Welcome</div>
+</section>
+        
+    <!-- ========================= -->
+    <!-- Desktop -->
+    <!-- ========================= -->
+
+   <section id="desktop" class="hidden">
+
+    <div id="desktopIcons">
+
+        <div class="icon" id="birthdayIcon">
+            <img src="assets/icons/birthday.png" alt="Birthday">
+            <p id="birthdayLabel">Birthday.exe</p>
+        </div>
+
+        <div class="icon">
+            <img src="assets/icons/computer.png" alt="Computer">
+            <p>My Computer</p>
+        </div>
+
+        <div class="icon">
+            <img src="assets/icons/folder.png" alt="Folder">
+            <p>My Documents</p>
+        </div>
+
+        <div class="icon">
+            <img src="assets/icons/recycle.png" alt="Recycle Bin">
+            <p>Recycle Bin</p>
+        </div>
+
+    </div>
+
+    <div id="windowLayer"></div>
+
+    <footer id="taskbar">
+
+        <button id="startButton">
+            🟢 Start
+        </button>
+
+        <div id="taskbarApps"></div>
+
+        <div id="clock">12:00 PM</div>
+
+    </footer>
+
+</section>
+
+    <!-- ========================= -->
+    <!-- Audio -->
+    <!-- ========================= -->
+
+    <audio
+        id="startupSound"
+        src="assets/sounds/startup.mp3">
+    </audio>
+
+    <audio
+        id="errorSound"
+        src="assets/sounds/error.mp3">
+    </audio>
+
+    <audio
+        id="clickSound"
+        src="assets/sounds/click.mp3">
+    </audio>
+
+    <audio
+        id="partySound"
+        src="assets/sounds/party.mp3">
+    </audio>
+
+    <!-- ========================= -->
+    <!-- Scripts -->
+    <!-- ========================= -->
+
+    <script src="js/windows.js"></script>
+    <script src="js/popupEngine.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
