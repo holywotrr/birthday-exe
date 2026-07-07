@@ -309,65 +309,23 @@ button{
     height:48px;
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+#rotateNotice{
+    display:none;
+}
 
-@media (max-width:700px){
-    #desktopIcons{
-        top:12px;
-        left:10px;
-        gap:14px;
-    }
-
-    .icon{
-        width:76px;
-    }
-
-    .icon img{
-        width:42px;
-        height:42px;
-    }
-
-    .icon p{
-        font-size:11px;
-    }
-
-    .xpWindow{
-        max-width:92vw !important;
-        max-height:76vh !important;
-    }
-
-    .windowTitle{
-        cursor:default;
-    }
-
-    .windowBody{
-        font-size:13px;
-        padding:14px;
-        overflow:auto !important;
-        padding-bottom:30px;
-    }
-
-    .windowBody button,
-    button{
-        min-height:36px;
-        padding:8px 12px;
-        touch-action:manipulation;
-    }
-
-    #taskbar{
-        height:38px;
-        padding:0 6px;
-    }
-
-    #startButton{
-        width:72px;
-        font-size:12px;
-    }
-
-    #clock{
-        font-size:12px;
-        min-width:70px;
+@media (max-width:700px) and (orientation:portrait){
+    #rotateNotice{
+        position:fixed;
+        inset:0;
+        z-index:999999;
+        background:#245EDB;
+        color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        font-family:Tahoma, Verdana, sans-serif;
+        font-size:24px;
+        padding:30px;
     }
 }
