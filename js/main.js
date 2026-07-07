@@ -10,6 +10,7 @@ const desktop = document.getElementById("desktop");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("loginButton");
+const fullscreenButton = document.getElementById("fullscreenButton");
 
 const birthdayIcon = document.getElementById("birthdayIcon");
 const birthdayLabel = document.getElementById("birthdayLabel");
@@ -28,6 +29,20 @@ window.addEventListener("load", () => {
 });
 
 loginButton.addEventListener("click", login);
+fullscreenButton.addEventListener("click", async () => {
+
+    try{
+
+        await document.documentElement.requestFullscreen();
+
+    }catch(e){
+
+        alert("Your browser blocked Full Screen.");
+
+    }
+
+});
+
 usernameInput.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 passwordInput.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 
