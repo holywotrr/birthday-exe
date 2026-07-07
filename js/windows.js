@@ -16,36 +16,14 @@ function createWindow({
     height = 280,
     x = null,
     y = null,
-    random = false,
     content = ""
 }) {
     const layer = document.getElementById("windowLayer");
 
     if (!layer) {
         console.error("windowLayer not found.");
-        return null;
+        return;
     }
-
-    const isMobile = window.innerWidth <= 700;
-
-    if (isMobile) {
-        width = Math.min(width, window.innerWidth * 0.92);
-        height = Math.min(height, window.innerHeight * 0.76);
-    }
-
-    if (random) {
-        const maxX = Math.max(8, window.innerWidth - width - 8);
-        const maxY = Math.max(8, window.innerHeight - height - 48);
-
-        if (x === null) x = Math.random() * maxX;
-        if (y === null) y = Math.random() * maxY;
-    } else {
-        if (x === null) x = (window.innerWidth - width) / 2;
-        if (y === null) y = (window.innerHeight - height) / 2 - 20;
-    }
-
-    x = clamp(x, 8, Math.max(8, window.innerWidth - width - 8));
-    y = clamp(y, 8, Math.max(8, window.innerHeight - height - 48));
 
     const win = document.createElement("div");
     win.className = "xpWindow";
@@ -54,6 +32,15 @@ function createWindow({
 
     win.style.width = width + "px";
     win.style.height = height + "px";
+
+    if (x === null) {
+        x = (window.innerWidth - width) / 2;
+    }
+
+    if (y === null) {
+        y = (window.innerHeight - height) / 2 - 30;
+    }
+
     win.style.left = x + "px";
     win.style.top = y + "px";
     win.style.zIndex = highestZ++;
@@ -72,14 +59,13 @@ function createWindow({
     `;
 
     layer.appendChild(win);
-
     makeDraggable(win);
 
     win.addEventListener("mousedown", () => bringToFront(win));
-    win.addEventListener("touchstart", () => bringToFront(win), { passive: true });
 
-    const closeBtn = win.querySelector(".windowClose");
-    closeBtn.onclick = () => win.remove();
+    win.querySelector(".windowClose").onclick = () => {
+        win.remove();
+    };
 
     return win;
 }
