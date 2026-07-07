@@ -47,13 +47,9 @@ function login() {
 
     localStorage.setItem("guestName", username);
     birthdayLabel.textContent = `${username}'s Invitation.exe`;
-   
-    loginScreen.classList.add("hidden");
 
-    desktop.classList.remove("hidden");
-    desktop.style.opacity = "1";
-   
-    showDisplayWizard(username);
+    loginScreen.classList.add("hidden");
+    showWelcomeScreen(username);
 }
 
 function showWelcomeScreen(username) {
@@ -125,17 +121,9 @@ document.querySelectorAll(".icon").forEach(icon => {
 
     const text = label.textContent.trim();
 
-    if (text === "My Documents") {
-        icon.addEventListener("dblclick", openMyDocuments);
-    }
-
-    if (text === "Recycle Bin") {
-        icon.addEventListener("dblclick", openRecycleBin);
-    }
-   
-   if (text.includes("Computer")) {
-       icon.addEventListener("dblclick", openMyComputer);
-    }
+    if (text === "My Documents") icon.addEventListener("dblclick", openMyDocuments);
+    if (text === "Recycle Bin") icon.addEventListener("dblclick", openRecycleBin);
+    if (text.includes("Computer")) icon.addEventListener("dblclick", openMyComputer);
 });
 
 function openMyDocuments() {
@@ -144,22 +132,16 @@ function openMyDocuments() {
         width: 560,
         height: 360,
         content: `
-            <h3>My Documents</h3>
-            <br>
+            <h3>My Documents</h3><br>
             <div style="display:flex;gap:35px;text-align:center;">
                 <div onclick="openCollegeFolder()" style="cursor:pointer;">
-                    <div style="font-size:42px;">📁</div>
-                    <p>College Stuff</p>
+                    <div style="font-size:42px;">📁</div><p>College Stuff</p>
                 </div>
-
                 <div onclick="openPersonalFolder()" style="cursor:pointer;">
-                    <div style="font-size:42px;">📁</div>
-                    <p>Personal</p>
+                    <div style="font-size:42px;">📁</div><p>Personal</p>
                 </div>
-
                 <div onclick="openXXXFolder()" style="cursor:pointer;">
-                    <div style="font-size:42px;">📁</div>
-                    <p>xxx</p>
+                    <div style="font-size:42px;">📁</div><p>xxx</p>
                 </div>
             </div>
         `
@@ -189,13 +171,7 @@ function openXXXFolder() {
         title: "xxx",
         width: 360,
         height: 180,
-        content: `
-            <div style="text-align:center;">
-                <h3>Loading...</h3>
-                <br>
-                <p>Opening folder contents...</p>
-            </div>
-        `
+        content: `<div style="text-align:center;"><h3>Loading...</h3><br><p>Opening folder contents...</p></div>`
     });
 
     setTimeout(() => {
@@ -223,22 +199,16 @@ function openRecycleBin() {
         width: 560,
         height: 350,
         content: `
-            <h3>Recycle Bin</h3>
-            <br>
+            <h3>Recycle Bin</h3><br>
             <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
                 <div onclick="openTrashFile('men')" style="cursor:pointer;">
-                    <div style="font-size:42px;">🗑️</div>
-                    <p>men.txt</p>
+                    <div style="font-size:42px;">🗑️</div><p>men.txt</p>
                 </div>
-
                 <div onclick="openTrashFile('trump')" style="cursor:pointer;">
-                    <div style="font-size:42px;">🗑️</div>
-                    <p>trump.txt</p>
+                    <div style="font-size:42px;">🗑️</div><p>trump.txt</p>
                 </div>
-
                 <div onclick="openTrashFile('gojo')" style="cursor:pointer;">
-                    <div style="font-size:42px;">🗑️</div>
-                    <p>gojo.txt</p>
+                    <div style="font-size:42px;">🗑️</div><p>gojo.txt</p>
                 </div>
             </div>
         `
@@ -256,10 +226,53 @@ function openTrashFile(type) {
         title: type + ".txt",
         width: 380,
         height: 210,
+        content: `<p><b>Status:</b> Could not restore file.</p><br><p><b>Reason:</b> ${jokes[type]}</p>`
+    });
+}
+
+function openMyComputer() {
+    createWindow({
+        title: "My Computer",
+        width: 560,
+        height: 360,
         content: `
-            <p><b>Status:</b> Could not restore file.</p>
-            <br>
-            <p><b>Reason:</b> ${jokes[type]}</p>
+            <h3>My Computer</h3><br>
+            <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
+                <div onclick="openDrive('Local Disk (C:)')" style="cursor:pointer;">
+                    <div style="font-size:42px;">💽</div><p>Local Disk (C:)</p>
+                </div>
+                <div onclick="openDrive('DVD Drive (D:)')" style="cursor:pointer;">
+                    <div style="font-size:42px;">📀</div><p>DVD Drive (D:)</p>
+                </div>
+                <div onclick="openBirthdayDrive()" style="cursor:pointer;">
+                    <div style="font-size:42px;">🎂</div><p>Birthday Drive (B:)</p>
+                </div>
+            </div>
+        `
+    });
+}
+
+function openDrive(name) {
+    createWindow({
+        title: name,
+        width: 400,
+        height: 220,
+        content: `<p>This drive is empty.</p><br><p><b>Status:</b> suspiciously clean.</p>`
+    });
+}
+
+function openBirthdayDrive() {
+    createWindow({
+        title: "Birthday Drive (B:)",
+        width: 460,
+        height: 260,
+        content: `
+            <h3>Birthday partition found 🎂</h3><br>
+            <p>This drive contains important birthday system files.</p><br>
+            <p><b>Files:</b></p><br>
+            <p>birthday_invitation.exe</p>
+            <p>cake.dll</p>
+            <p>party_config.sys</p>
         `
     });
 }
@@ -272,14 +285,9 @@ function openBirthdayWindow() {
         height: 210,
         content: `
             <h2>Welcome!</h2>
-
             <p>You have received one new invitation.</p>
-
             <br>
-
-            <button id="continueButton">
-                Continue
-            </button>
+            <button id="continueButton">Continue</button>
         `
     });
 
@@ -302,130 +310,4 @@ function openBirthdayWindow() {
             }, 2500);
         };
     }, 50);
-}
-
-async function showDisplayWizard(username){
-
-    createWindow({
-
-        id:"displayWizard",
-
-        title:"Display Settings",
-
-        width:500,
-
-        height:280,
-
-        content:`
-
-            <h2>Windows XP Display Wizard</h2>
-
-            <br>
-
-            <p>
-                Birthday.exe recommends enabling
-                <b>Full Screen Mode</b>
-                for the best experience.
-            </p>
-
-            <br>
-
-            <p>
-                Recommended Resolution:
-                <b>${screen.width} × ${screen.height}</b>
-            </p>
-
-            <br><br>
-
-            <div style="text-align:right;">
-
-                <button id="fullscreenBtn">
-                    Enable
-                </button>
-
-            </div>
-
-        `
-
-    });
-
-    document.getElementById("fullscreenBtn").onclick = async ()=>{
-
-        try{
-
-            if(document.documentElement.requestFullscreen){
-
-                await document.documentElement.requestFullscreen();
-
-            }
-
-        }catch(e){}
-
-        closeAllWindows();
-
-        showWelcomeScreen(username);
-
-    };
-
-}
-
-function openMyComputer() {
-    createWindow({
-        title: "My Computer",
-        width: 560,
-        height: 360,
-        content: `
-            <h3>My Computer</h3>
-            <br>
-
-            <div style="display:flex;gap:35px;text-align:center;flex-wrap:wrap;">
-                <div onclick="openDrive('Local Disk (C:)')" style="cursor:pointer;">
-                    <div style="font-size:42px;">💽</div>
-                    <p>Local Disk (C:)</p>
-                </div>
-
-                <div onclick="openDrive('DVD Drive (D:)')" style="cursor:pointer;">
-                    <div style="font-size:42px;">📀</div>
-                    <p>DVD Drive (D:)</p>
-                </div>
-
-                <div onclick="openBirthdayDrive()" style="cursor:pointer;">
-                    <div style="font-size:42px;">🎂</div>
-                    <p>Birthday Drive (B:)</p>
-                </div>
-            </div>
-        `
-    });
-}
-
-function openDrive(name) {
-    createWindow({
-        title: name,
-        width: 400,
-        height: 220,
-        content: `
-            <p>This drive is empty.</p>
-            <br>
-            <p><b>Status:</b> suspiciously clean.</p>
-        `
-    });
-}
-
-function openBirthdayDrive() {
-    createWindow({
-        title: "Birthday Drive (B:)",
-        width: 460,
-        height: 260,
-        content: `
-            <h3>Birthday partition found 🎂</h3>
-            <br>
-            <p>This drive contains important birthday system files.</p>
-            <br>
-            <p><b>Files:</b></p>
-            <br>
-            <p>birthday_invitation.exe</p>
-            <p>cake.dll</p>
-            <p>party_config.sys</p>
-        `
-    });
 }
