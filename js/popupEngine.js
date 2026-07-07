@@ -11,8 +11,8 @@ function createVirusPopup() {
         "Memory access violation.",
         "Birthday.exe cannot be deleted.",
         "Cake.dll has been installed.",
-        "SkillIssue.exe is running in the background.",
-        "ChronicallyOnline.exe is running in the background."
+        "gay.exe is running in the background.",
+        "meow.exe is running in the background."
     ];
 
     let amount = 0;
