@@ -169,7 +169,7 @@ function createBirthdayInvitation() {
                     <p><b>📅 Date:</b> July 21, 2026</p>
                     <p><b>🕕 Time:</b> 6:00 PM - 10:00 PM / until closing</p>
                     <p><b>🎮 Theme:</b> ANYTHING!! (be yourself and bring yourself)</p>
-                    <p><b>📍 Location:</b> Balai Siesta Caffe, Mandaue City (2nd Floor, City Timesquare, Mandaue City)</p>
+                    <p><b>📍 Location:</b> Wingers Unlimited (Unit 2101-B, Stand-alone Building, Parkmall, 168 Ouano Ave, Tipollo, Mandaue City, Cebu)</p>
                 </div>
                 <br><br>
                 <button id="acceptBtn">I'll Be There!</button>
